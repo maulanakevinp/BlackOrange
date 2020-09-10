@@ -4623,28 +4623,28 @@ hero-btn {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   /* line 24, ../../../sponDon TI/Running Project/263.InteriorDesign_HTML/HTML/assets/scss/_footer.scss */
-  .footer-area .footer-top .single-footer-caption .footer-pera .info1 {
+  .footer-area .footer-top .single-footer-caption .footer-pera p {
     padding-right: 0px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 24, ../../../sponDon TI/Running Project/263.InteriorDesign_HTML/HTML/assets/scss/_footer.scss */
-  .footer-area .footer-top .single-footer-caption .footer-pera .info1 {
+  .footer-area .footer-top .single-footer-caption .footer-pera p {
     padding-right: 0px;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   /* line 24, ../../../sponDon TI/Running Project/263.InteriorDesign_HTML/HTML/assets/scss/_footer.scss */
-  .footer-area .footer-top .single-footer-caption .footer-pera .info1 {
+  .footer-area .footer-top .single-footer-caption .footer-pera p {
     padding-right: 0px;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   /* line 24, ../../../sponDon TI/Running Project/263.InteriorDesign_HTML/HTML/assets/scss/_footer.scss */
-  .footer-area .footer-top .single-footer-caption .footer-pera .info1 {
+  .footer-area .footer-top .single-footer-caption .footer-pera p {
     padding-right: 0px;
   }
 }
