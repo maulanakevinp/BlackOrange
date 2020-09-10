@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/beranda', function () {
     return view('beranda');
 });
+
+Route::resource('product', 'ProductController');

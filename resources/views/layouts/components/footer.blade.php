@@ -4,54 +4,30 @@
         <div class="container">
             <div class="footer-top footer-padding">
                 <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-8">
+                    <div class="col-lg-6">
                         <div class="single-footer-caption mb-50">
                             <!-- logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                <a href="/" class="font-weight-bold text-uppercase">{{ App\Utility::find(1)->nama_website }}</a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p class="info1">Grabbing the concsumer’s attention isn’t enough you have to
-                                        keep that attention for at least a.</p>
+                                    {!! App\Utility::find(1)->tentang_kami !!}
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Alamat</h4>
+                            </div>
+                            <div class="footer-cap">
+                                <p>{{ App\Utility::find(1)->alamat_perusahaan }}</p>
+                            </div>
                             <div class="footer-number">
-                                <h4><span>+564 </span>7885 3222</h4>
-                                <p>youremail@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-md-5 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Useful Links</h4>
-                            </div>
-                            <div class="footer-cap">
-                                <span>New York</span>
-                                <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
-                            </div>
-                            <div class="footer-cap">
-                                <span>Japan</span>
-                                <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Instagram -->
-                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Instagram Feed</h4>
-                            </div>
-                            <div class="instagram-gellay">
-                                <ul class="insta-feed">
-                                    <li><a href="#"><img src="assets/img/gallery/instagram1.png" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/gallery/instagram2.png" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/gallery/instagram3.png" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/gallery/instagram4.png" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/gallery/instagram5.png" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/gallery/instagram6.png" alt=""></a></li>
-                                </ul>
+                                <h4><a href="tel:{{ App\Utility::find(1)->nomor_telepon }}">{{ App\Utility::find(1)->nomor_telepon }}</a></h4>
+                                <p><a href="mail:{{ App\Utility::find(1)->email }}">{{ App\Utility::find(1)->email }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -67,7 +43,7 @@
                                     document.write(new Date().getFullYear());
                                 </script> All rights reserved | This template is made with <i class="fa fa-heart"
                                     aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                    target="_blank">Colorlib</a>
+                                    target="_blank">Colorlib</a> Powered By <a target="_blank" href="https://pesan-web.com">pesan-web.com</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
@@ -75,11 +51,11 @@
                     <div class="col-xl-3 col-lg-4">
                         <!-- Footer Social -->
                         <div class="footer-social f-right">
-                            <span>Follow Us</span>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <span>Ikuti Kami</span>
+                            <a href="{{ App\Utility::find(1)->link_twitter }}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ App\Utility::find(1)->link_facebook }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ App\Utility::find(1)->link_youtube }}"><i class="fab fa-youtube"></i></a>
+                            <a href="{{ App\Utility::find(1)->link_instagram }}"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

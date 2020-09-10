@@ -7,7 +7,6 @@
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
@@ -51,7 +50,7 @@
     @include('layouts.components.footer')
 
     <div class="icons" style="position: fixed; bottom: 70px; right: 15px; z-index: 1030">
-        <a href="https://api.whatsapp.com/send?phone={{ "6281234567890" }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%dengan%20produk%20dan%20jasa%20yang%20anda%20tawarkan" target="_blank" style="width: 80px;height: 80px;">
+        <a href="https://api.whatsapp.com/send?phone={{ App\Utility::find(1)->nomor_whatsapp }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%20dengan%20produk%20dan%20jasa%20yang%20anda%20tawarkan" target="_blank" style="width: 80px;height: 80px;">
             <img title="Kirim Pesan WhatsApp" alt="Kirim Pesan WhatsApp" src="{{ asset('assets/img/logo/whatsapp.png') }}" style="width: 80px;height: 80px;padding: 15px;">
         </a>
     </div>
