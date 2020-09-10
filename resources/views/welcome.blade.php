@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Black Orange CCTV</title>
-    <meta name="description" content="Website resmi Black Orange CCTV" />
+    <meta name="description"
+        content="Website resmi PT. HITAM ORANYE INDONESIA yang bergerak dibidang layanan jasa dan penjualan product teknologi dan telekomunikasi serta security system" />
     <meta name="author" content="pesan-web.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,900">
     <link rel="stylesheet"
