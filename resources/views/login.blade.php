@@ -14,11 +14,13 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan Email ...">
+                                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email ...">
+                                @error('email') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Password ...">
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password ...">
+                                @error('password') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="button boxed-btn">Login</button>
