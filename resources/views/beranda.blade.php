@@ -10,12 +10,12 @@
             <div class="row">
                 <div class="col-xl-5 col-lg-5">
                     <div class="hero__caption">
-                        <span data-animation="fadeInLeft" data-delay=".4s">Welcome to Black Orange CCTV</span>
-                        <h1 data-animation="fadeInLeft" data-delay=".6s">Specialist CCTV & Security System</h1>
+                        <span data-animation="fadeInLeft" data-delay=".4s">Welcome to {{ App\Utility::find(1)->nama_website }}</span>
+                        <h1 data-animation="fadeInLeft" data-delay=".6s">{{ App\Utility::find(1)->slogan }}</h1>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7">
-                    <div class="owl-carousel">
+                    <div id="owl-one" class="owl-carousel">
                         @foreach (App\SlideShow::all() as $slideShow)
                             <img style="max-height: 350px" class="mw-100" src="{{ asset(Storage::url($slideShow->foto)) }}" alt="hero">
                         @endforeach
@@ -35,7 +35,7 @@
 <!-- Our Info start -->
 
 <!--? Professional Services Start -->
-<div class="profession-caption mt-5">
+<div id="tentang-kami" class="profession-caption mt-5">
     <div class="container">
         <!-- Section Tittle -->
         <div class="section-tittle profession-details">
@@ -117,26 +117,22 @@
 @endif
 
 <!-- Brand Area Start -->
-<div class="brand-area pt-3 pb-3">
-    <div class="container">
-        <div class="brand-active brand-border pt-50 pb-50 justify-content-center">
-            @foreach (App\Brand::all() as $brand)
-                <div class="single-brand">
-                    <img src="{{ asset(Storage::url($brand->foto)) }}" alt="">
-                </div>
-            @endforeach
-        </div>
+<div class="container pt-100 pb-100">
+    <div id="owl-two" class="owl-carousel">
+        @foreach (App\Brand::all() as $brand)
+            <img class="px-3" style="max-height: 150px;" src="{{ asset(Storage::url($brand->foto)) }}" alt="">
+        @endforeach
     </div>
 </div>
 <!-- Brand Area End -->
 
 <!-- Want To work -->
-<section class="wantToWork-area w-padding2">
+<section id="kontak" class="wantToWork-area w-padding2">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-xl-8 col-lg-8 col-md-8">
                 <div class="wantToWork-caption wantToWork-caption2">
-                    <h2>Apakah anda mencari specialist cctv dan security system?</h2>
+                    <h2>{{ App\Utility::find(1)->kalimat_penarik_pelanggan }}</h2>
                 </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-3">
@@ -152,7 +148,7 @@
 @push('scripts')
 <script>
     $(document).ready(function () {
-        $('.owl-carousel').owlCarousel({
+        $('#owl-one').owlCarousel({
             loop:true,
             autoplay:true,
             autoplayTimeout:3000,
@@ -167,6 +163,24 @@
                 },
                 1000:{
                     items:1
+                }
+            }
+        });
+        $('#owl-two').owlCarousel({
+            loop:true,
+            autoplay:true,
+            autoplayTimeout:3000,
+            smartSpeed:1000,
+            autoplayHoverPause:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
                 }
             }
         });

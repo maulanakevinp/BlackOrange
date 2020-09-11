@@ -14,17 +14,9 @@ class SlideShowController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('slideshow', [
+            'slideshows'    => SlideShow::all()
+        ]);
     }
 
     /**
@@ -34,40 +26,6 @@ class SlideShowController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\SlideShow  $slideShow
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SlideShow $slideShow)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\SlideShow  $slideShow
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SlideShow $slideShow)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SlideShow  $slideShow
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SlideShow $slideShow)
     {
         //
     }

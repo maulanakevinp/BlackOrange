@@ -18,7 +18,7 @@
                             <ul id="navigation">
                                 <li><a href="/">Beranda</a></li>
                                 <li><a href="/#tentang-kami">Tentang Kami</a></li>
-                                <li><a href="#">Jasa & Layanan</a>
+                                <li><a href="/jasa">Jasa & Layanan</a>
                                     @if ($jasa->groupBy('produk')->count() > 0)
                                         <ul class="submenu">
                                             @foreach ($jasa->groupBy('produk') as $productKey => $product)
@@ -45,7 +45,7 @@
                                         </ul>
                                     @endif
                                 </li>
-                                <li><a href="#">Produk</a>
+                                <li><a href="/produk">Produk</a>
                                     @if ($produk->groupBy('produk')->count() > 0)
                                         <ul class="submenu">
                                             @foreach ($produk->groupBy('produk') as $productKey => $product)
@@ -72,14 +72,29 @@
                                         </ul>
                                     @endif
                                 </li>
-                                <li><a href="#kontak">Kontak</a></li>
+                                <li><a href="/#kontak">Kontak</a></li>
+                                @auth
+                                    <li><a href="#">Menu</a>
+                                        <ul class="submenu">
+                                            <li><a href="/produk">Kelola Produk</a></li>
+                                            <li><a href="/jasa">Kelola Jasa</a></li>
+                                            <li><a href="/brand">Kelola Brand</a></li>
+                                            <li><a href="/slideshow">Kelola Slideshow</a></li>
+                                            <li><a href="/testimoni">Kelola Testimoni</a></li>
+                                            <li><a href="/pengaturan-website">Pengaturan Website</a></li>
+                                            <li><a href="/ganti-password">Ganti Password</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/logout" onclick="event.preventDefault(); document.querySelector('#logout').submit();">Logout</a>
+                                        <form id="logout" action="{{ route('keluar') }}" method="post">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                @endauth
                             </ul>
                         </nav>
                     </div>
-                    <!-- Header-btn -->
-                    {{-- <div class="header-btns d-none d-lg-block f-right">
-                        <a href="#" class="btn header-btn">Contact Us</a>
-                    </div> --}}
                     <!-- Mobile Menu -->
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>

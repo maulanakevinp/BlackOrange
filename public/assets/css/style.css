@@ -205,6 +205,14 @@ body {
   font-style: normal;
 }
 
+html,
+body {
+    scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+}
+
+
 /* line 9, ../../../sponDon TI/Running Project/263.InteriorDesign_HTML/HTML/assets/scss/_common.scss */
 h1,
 h2,
@@ -3442,7 +3450,7 @@ hero-btn {
 
 /* line 1, ../../../sponDon TI/Running Project/263.InteriorDesign_HTML/HTML/assets/scss/_h1-hero.scss */
 .slider-height {
-  height: 1050px;
+  height: 900px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

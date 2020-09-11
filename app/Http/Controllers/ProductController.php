@@ -14,7 +14,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('produk.index', [
+            'products'  => Product::where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(12)
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexJasa()
+    {
+        return view('jasa.index', [
+            'products'  => Product::where('produk_atau_jasa',2)->orderBy('id', 'desc')->paginate(12)
+        ]);
     }
 
     /**
@@ -41,10 +55,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $produk)
     {
         //
     }
@@ -52,10 +66,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $produk)
     {
         //
     }
@@ -64,10 +78,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $produk)
     {
         //
     }
@@ -75,10 +89,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $produk)
     {
         //
     }

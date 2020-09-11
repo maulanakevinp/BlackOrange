@@ -17,7 +17,9 @@ class CreateUtilitiesTable extends Migration
             $table->id();
             $table->text('nama_website');
             $table->text('logo');
+            $table->string('slogan',64);
             $table->text('nama_perusahaan');
+            $table->text('kalimat_penarik_pelanggan');
             $table->text('alamat_perusahaan');
             $table->text('tentang_kami');
             $table->string('nomor_telepon', 16);
