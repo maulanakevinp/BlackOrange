@@ -50,22 +50,28 @@
                                         <ul class="submenu">
                                             @foreach ($produk->groupBy('produk') as $productKey => $product)
                                                 <li><a href="#">{{ $productKey }}</a>
-                                                    @if ($produk->where('produk', $productKey)->groupBy('kategori')->count() > 1)
-                                                        <ul class="sub-submenu">
-                                                            @foreach($produk->where('produk', $productKey)->groupBy('kategori') as $categoryKey => $category)
-                                                                @if($categoryKey)
-                                                                    <li><a href="#">{{ $categoryKey }}</a>
-                                                                        @if ($produk->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 1)
-                                                                            <ul class="sub-submenu">
-                                                                                @foreach($produk->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
-                                                                                    <li><a href="#">{{ $subcategoryKey }}</a></li>
-                                                                                @endforeach
-                                                                            </ul>
-                                                                        @endif
-                                                                    </li>
-                                                                @endif
-                                                            @endforeach
-                                                        </ul>
+                                                    @if ($produk->where('produk', $productKey)->groupBy('kategori')->count() > 0)
+                                                        @if (!array_key_exists("",$produk->where('produk', $productKey)->groupBy('kategori')))
+                                                            <ul class="sub-submenu">
+                                                                @foreach($produk->where('produk', $productKey)->groupBy('kategori') as $categoryKey => $category)
+                                                                    @if($categoryKey != "")
+                                                                        <li><a href="#">{{ $categoryKey }}</a>
+                                                                            @if ($produk->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 0)
+                                                                                @if (!array_key_exists("",$produk->where('kategori', $categoryKey)->groupBy('sub_kategori')))
+                                                                                    <ul class="sub-submenu">
+                                                                                        @foreach($produk->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
+                                                                                            @if($subcategoryKey != "")
+                                                                                                <li><a href="#">{{ $subcategoryKey }}</a></li>
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    </ul>
+                                                                                @endif
+                                                                            @endif
+                                                                        </li>
+                                                                    @endif
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
                                                     @endif
                                                 </li>
                                             @endforeach

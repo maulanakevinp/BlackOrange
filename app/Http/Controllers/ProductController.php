@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -38,7 +40,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('produk.create');
     }
 
     /**
@@ -49,7 +51,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'produk_atau_jasa'  =>  ['required'],
+            'nama_produk'       =>  ['required','string','max:168'],
+            'produk'            =>  ['required','string','max:64'],
+            'kategori'          =>  ['nullable','string','max:64'],
+            'sub_kategori'      =>  ['nullable','string','max:64'],
+            'harga'             =>  ['required','numeric','min:1000'],
+            'deskripsi'         =>  ['required'],
+            'bukalapak'         =>  ['nullable'],
+            'tokopedia'         =>  ['nullable'],
+            'shopee'            =>  ['nullable'],
+            'olx'               =>  ['nullable'],
+        ]);
+
+        $produk = Product::create($data);
+        return redirect()->route('produk.edit', $produk)->with('success', 'Produk berhasil ditambahkan');
     }
 
     /**
@@ -58,9 +75,12 @@ class ProductController extends Controller
      * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $produk)
+    public function show(Product $produk, $slug)
     {
-        //
+        if (Str::slug($produk->nama_produk) != $slug) {
+            return abort(404);
+        }
+        return view('produk.show', compact('produk'));
     }
 
     /**
@@ -71,7 +91,7 @@ class ProductController extends Controller
      */
     public function edit(Product $produk)
     {
-        //
+        return view('produk.edit', compact('produk'));
     }
 
     /**
@@ -83,7 +103,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $produk)
     {
-        //
+        $data = $request->validate([
+            'produk_atau_jasa'  =>  ['required'],
+            'nama_produk'       =>  ['required','string','max:168'],
+            'produk'            =>  ['required','string','max:64'],
+            'kategori'          =>  ['nullable','string','max:64'],
+            'sub_kategori'      =>  ['nullable','string','max:64'],
+            'harga'             =>  ['required','numeric','min:1000'],
+            'deskripsi'         =>  ['required'],
+            'bukalapak'         =>  ['nullable'],
+            'tokopedia'         =>  ['nullable'],
+            'shopee'            =>  ['nullable'],
+            'olx'               =>  ['nullable'],
+        ]);
+
+        $produk->update($data);
+        return redirect()->back()->with('success', 'Produk berhasil diperbarui');
     }
 
     /**
@@ -94,6 +129,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $produk)
     {
-        //
+        foreach ($produk->images as $image) {
+            File::delete(storage_path('app/'.$image->foto));
+            $image->delete();
+        }
+
+        $produk->delete();
+        return redirect()->back()->with('success', 'Produk berhasil dihapus');
     }
 }

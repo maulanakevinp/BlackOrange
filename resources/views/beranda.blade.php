@@ -5,7 +5,7 @@
 @section('slider-area')
 <div class="slider-area">
     <!-- Single Slider -->
-    <div class="single-slider slider-height hero-overly d-flex align-items-center">
+    <div class="single-slider pt-150 pb-100 hero-overly d-flex align-items-center">
         <div class="container">
             <div class="row">
                 <div class="col-xl-5 col-lg-5">

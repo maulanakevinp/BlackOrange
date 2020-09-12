@@ -4,29 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,41 +16,33 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $photos = $request->file('file');
+
+        if (!is_array($photos)) {
+            $photos = [$photos];
+        }
+
+        for ($i = 0; $i < count($photos); $i++) {
+            Image::create([
+                'foto'      => $photos[$i]->store('public/gambar-produk'),
+                'product_id'=> $request->id
+            ]);
+        }
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Image $image)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Image $image)
-    {
-        //
+        $images = Image::where('product_id', $id)->paginate(9);
+        return response()->json($images);
     }
 
     /**
@@ -78,8 +51,35 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id)
     {
-        //
+        $image = Image::findOrFail($id);
+        File::delete(storage_path('app/'.$image->foto));
+        $image->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gambar berhasil dihapus'
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Image  $image
+     * @return \Illuminate\Http\Response
+     */
+    public function destroys(Request $request)
+    {
+        foreach ($request->id as $id) {
+            $image = Image::findOrFail($id);
+            File::delete(storage_path('app/'.$image->foto));
+            $image->delete();
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gambar berhasil dihapus'
+        ]);
     }
 }

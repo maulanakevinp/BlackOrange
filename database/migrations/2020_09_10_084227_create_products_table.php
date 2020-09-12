@@ -16,11 +16,15 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->boolean('produk_atau_jasa')->default(1);
-            $table->string('nama_produk', 64);
+            $table->string('nama_produk', 168);
             $table->string('produk', 64);
             $table->string('kategori', 64)->nullable();
             $table->string('sub_kategori', 64)->nullable();
             $table->text('deskripsi')->nullable();
+            $table->text('bukalapak')->nullable();
+            $table->text('olx')->nullable();
+            $table->text('tokopedia')->nullable();
+            $table->text('shopee')->nullable();
             $table->bigInteger('harga');
             $table->timestamps();
         });
