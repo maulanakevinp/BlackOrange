@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/produk', 'ProductController@index')->name('produk.index');
 Route::get('/produk/{produk}/{slug}', 'ProductController@show')->name('produk.show');
 Route::get('/jasa', 'ProductController@indexJasa')->name('jasa.index');
+Route::get('/image/{id}', 'ImageController@show')->name('image.show');
 
 Route::group(['middleware' => ['web', 'guest']], function () {
     Route::get('/masuk', 'AuthController@index')->name('masuk');
@@ -31,7 +32,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/ganti-password', 'AuthController@edit');
     Route::get('/tambah-produk', 'ProductController@create');
     Route::get('/edit-produk/{produk}', 'ProductController@edit')->name('produk.edit');
-    Route::get('/image/{id}', 'ImageController@show')->name('image.show');
     Route::post('/keluar', 'AuthController@keluar')->name('keluar');
     Route::post('/image', 'ImageController@store')->name('image.store');
     Route::delete('/image/{image}', 'ImageController@destroy')->name('image.destroy');
