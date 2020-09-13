@@ -2,6 +2,10 @@
 
 @section('title', $utility->nama_website . ' - Beranda')
 
+@section('styles')
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+@endsection
+
 @section('slider-area')
 <div class="slider-area">
     <!-- Single Slider -->
@@ -17,7 +21,9 @@
                 <div class="col-xl-7 col-lg-7">
                     <div id="owl-one" class="owl-carousel">
                         @foreach ($slideshows as $slideShow)
-                            <img style="max-height: 350px" class="mw-100" src="{{ asset(Storage::url($slideShow->foto)) }}" alt="hero">
+                            <a href="{{ asset(Storage::url($slideShow->foto)) }}" data-fancybox="images">
+                                <img style="max-height: 350px" class="mw-100" src="{{ asset(Storage::url($slideShow->foto)) }}" alt="hero">
+                            </a>
                         @endforeach
                     </div>
                 </div>
@@ -205,6 +211,7 @@
 @endsection
 
 @push('scripts')
+<script src="/assets/js/jquery.fancybox.js"></script>
 <script>
     $(document).ready(function () {
         $('#owl-one').owlCarousel({
@@ -225,6 +232,20 @@
                 }
             }
         });
+
+        $().fancybox({
+            selector : '.owl-item:not(.cloned) a',
+            hash   : false,
+            thumbs : {
+                autoStart : true
+            },
+            buttons : [
+                'zoom',
+                'download',
+                'close'
+            ]
+        });
+
         $('#owl-two').owlCarousel({
             loop:true,
             autoplay:true,

@@ -23,6 +23,7 @@
                             <ul id="navigation">
                                 <li><a href="/">Beranda</a></li>
                                 <li><a href="/tentang-kami">Tentang Kami</a></li>
+                                <li><a href="/gallery">Gallery</a></li>
                                 <li><a href="/jasa">Jasa & Layanan</a>
                                     @if ($layanan->groupBy('produk')->count() > 0)
                                         <ul class="submenu">

@@ -111,6 +111,7 @@
 @push('scripts')
 <script src="/assets/js/jquery.fancybox.js"></script>
 <script>
+
     let page = 1;
     let dataExists = true;
 
