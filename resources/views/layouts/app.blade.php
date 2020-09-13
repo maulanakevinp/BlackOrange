@@ -49,7 +49,6 @@
         @yield('content')
     </main>
 
-    <hr class="m-0">
     @include('layouts.components.footer')
 
     <div class="icons" style="position: fixed; bottom: 70px; right: 15px; z-index: 1030">

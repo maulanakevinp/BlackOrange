@@ -251,9 +251,17 @@
 
     $(".pagination").addClass("justify-content-center");
 
-    if ($(".sub-submenu").html() == "\r\n") {
-        $(".sub-submenu").css('display', 'none');
-    }
+    $(".nothing").each(function () {
+        if ($(this).parent().children().length == 1) {
+            $(this).parent().remove();
+        }
+    });
+
+    $(".slicknav_arrow").each(function () {
+        if ($(this).parent().parent().children().length == 1) {
+            $(this).remove();
+        }
+    });
 
     $("iframe").css('width', '100%');
 

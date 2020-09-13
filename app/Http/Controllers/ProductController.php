@@ -14,13 +14,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (auth()->user()) {
-            $products = Product::where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(15);
+            $products = Product::where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(9);
+            if ($request->kategori) {
+                $products = $products->where('kategori', $request->kategori);
+            }
         } else {
-            $products = Product::whereHas('images')->where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(15);
+            $products = Product::whereHas('images')->where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(9);
         }
+
+        $products->appends($request->only('cari'));
 
         return view('produk.index', compact('products'));
     }

@@ -9,7 +9,7 @@ $factory->define(Product::class, function (Faker $faker) {
     return [
         'nama_produk'       => $faker->sentence(3),
         'produk_atau_jasa'  => 1,
-        'produk'            => 'Samsung',
+        'produk'            => 'HIKVISION',
         'kategori'          => 'Camera',
         'sub_kategori'      => null,
         'deskripsi'         => $faker->sentence(12),

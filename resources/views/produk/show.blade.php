@@ -43,12 +43,17 @@
 @endsection
 
 @section('content')
+<div class="profession-caption mt-5">
+    <div class="container">
+        <!-- Section Tittle -->
+        <div class="section-tittle profession-details">
+            <h2>DESKRIPSI PRODUK</h2>
+            <p>{!! nl2br($produk->deskripsi) !!}</p>
+        </div>
+    </div>
+</div>
 <div class="slider-area2 container pt-100 pb-100">
     <div class="hero-cap hero-cap2">
-        <div class="mb-5">
-            <h3>DESKRIPSI PRODUK</h3>
-            <p class="text-white">{!! nl2br($produk->deskripsi) !!}</p>
-        </div>
         <div class="d-flex flex-column flex-md-row align-items-center justify-content-sm-center justify-content-md-between text-center text-lg-left">
             <h3>GAMBAR PRODUK</h3>
         </div>

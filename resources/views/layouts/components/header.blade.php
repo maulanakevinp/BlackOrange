@@ -31,16 +31,22 @@
                                                     @if ($layanan->where('produk', $productKey)->groupBy('kategori')->count() > 1)
                                                         <ul class="sub-submenu">
                                                             @foreach($layanan->where('produk', $productKey)->groupBy('kategori') as $categoryKey => $category)
-                                                                @if($categoryKey)
+                                                                @if($categoryKey!= "")
                                                                     <li><a href="#">{{ $categoryKey }}</a>
-                                                                        @if ($layanan->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 1)
+                                                                        @if ($layanan->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 1)
                                                                             <ul class="sub-submenu">
-                                                                                @foreach($layanan->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
-                                                                                    <li><a href="#">{{ $subcategoryKey }}</a></li>
+                                                                                @foreach($layanan->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
+                                                                                    @if($subcategoryKey != "")
+                                                                                        <li><a href="#">{{ $subcategoryKey }}</a></li>
+                                                                                    @else
+                                                                                        <li class="nothing" style="display: none"></li>
+                                                                                    @endif
                                                                                 @endforeach
                                                                             </ul>
                                                                         @endif
                                                                     </li>
+                                                                @else
+                                                                    <li class="nothing"></li>
                                                                 @endif
                                                             @endforeach
                                                         </ul>
@@ -60,16 +66,20 @@
                                                             @foreach($barang->where('produk', $productKey)->groupBy('kategori') as $categoryKey => $category)
                                                                 @if($categoryKey != "")
                                                                     <li><a href="#">{{ $categoryKey }}</a>
-                                                                        @if ($barang->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 0)
+                                                                        @if ($barang->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 0)
                                                                             <ul class="sub-submenu">
-                                                                                @foreach($barang->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
+                                                                                @foreach($barang->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
                                                                                     @if($subcategoryKey != "")
                                                                                         <li><a href="#">{{ $subcategoryKey }}</a></li>
+                                                                                    @else
+                                                                                        <li class="nothing"></li>
                                                                                     @endif
                                                                                 @endforeach
                                                                             </ul>
                                                                         @endif
                                                                     </li>
+                                                                @else
+                                                                    <li class="nothing"></li>
                                                                 @endif
                                                             @endforeach
                                                         </ul>

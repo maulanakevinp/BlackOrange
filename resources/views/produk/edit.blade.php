@@ -169,6 +169,7 @@
         </div>
     </div>
 </div>
+<hr class="m-0">
 @endsection
 
 @push('scripts')

@@ -20,7 +20,7 @@
 @section('content')
 <div class="services-area pt-100 pb-100">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             @forelse ($products as $product)
                 <div class="col-lg-4 col-md-6 col-sm-10 mb-5">
                     <div class="single-services mb-200">
@@ -31,12 +31,15 @@
                         @endif
                         <div class="services-caption">
                             <h3><a href="{{ route("produk.show", ['produk' => $product, 'slug' => Str::slug($product->nama_produk)]) }}" title="Detail Produk">{{ $product->nama_produk }}</a></h3>
-                            <p class="pera1">
+                            <p class="pera1 h4">
                                 Rp. {{ substr(number_format($product->harga, 2, ',', '.'),0,-3) }}
                             </p>
-                            <p class="pera2">
+                            <p class="pera2 h4">
                                 Rp. {{ substr(number_format($product->harga, 2, ',', '.'),0,-3) }}
                             </p>
+                            <div class="float-left">
+                                {{ $product->kategori }}{{ $product->sub_kategori ? ', ' . $product->sub_kategori : '' }}
+                            </div>
                             @auth
                                 <div class="float-right mt-3">
                                     <button data-link="{{ route('produk.edit', $product) }}" class="mx-1 bg-success p-2 rounded border-0 edit" title="Edit Produk">
