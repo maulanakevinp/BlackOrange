@@ -251,10 +251,11 @@
 
     $(".pagination").addClass("justify-content-center");
 
-    if ($(".sub-submenu").children().length == 0) {
-        console.log("none");
+    if ($(".sub-submenu").html() == "\r\n") {
         $(".sub-submenu").css('display', 'none');
     }
+
+    $("iframe").css('width', '100%');
 
 
 

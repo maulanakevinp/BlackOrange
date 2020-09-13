@@ -142,7 +142,7 @@
     </div>
 </section>
 <!-- Want To work End -->
-
+{!! App\Utility::find(1)->maps !!}
 @endsection
 
 @push('scripts')

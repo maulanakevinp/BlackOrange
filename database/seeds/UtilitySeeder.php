@@ -23,7 +23,7 @@ class UtilitySeeder extends Seeder
             'nomor_telepon'             => '081380809602',
             'nomor_whatsapp'            => '+6281380809602',
             'email'                     => 'admin@blackorangecctv.com',
-            'maps'                      => '',
+            'maps'                      => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448.99108668045164!2d106.76089840102658!3d-6.427468571933368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjUnMzguNyJTIDEwNsKwNDUnMzkuNiJF!5e0!3m2!1sid!2sid!4v1599960724682!5m2!1sid!2sid" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
             'link_facebook'             => '',
             'link_instagram'            => '',
             'link_twitter'              => '',
