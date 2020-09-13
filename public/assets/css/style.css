@@ -752,10 +752,30 @@ hero-btn {
   box-shadow: 0 0 10px 3px rgba(108, 98, 98, 0.2);
 }
 
+#wa-position {
+  background: #25D366;
+  height: 50px;
+  width: 50px;
+  right: 31px;
+  bottom: 85px;
+  position: fixed;
+  z-index: 10;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 48px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 10px 3px rgba(108, 98, 98, 0.2);
+}
+
 @media (max-width: 575px) {
   /* line 423, ../../../sponDon TI/Running Project/263.InteriorDesign_HTML/HTML/assets/scss/_common.scss */
   #scrollUp, #back-top {
     right: 16px;
+  }
+  #wa-position {
+      right: 16px;
   }
 }
 

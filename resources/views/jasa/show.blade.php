@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', App\Utility::find(1)->nama_website . ' - Tambah Produk')
+@section('title', App\Utility::find(1)->nama_website . ' - Tambah Jasa & Layanan')
 @section('description', $produk->nama_produk . '. Rp. ' . substr(number_format($produk->harga, 2, ',', '.'),0,-3))
 @section('styles')
 <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
@@ -47,7 +47,7 @@
     <div class="container">
         <!-- Section Tittle -->
         <div class="section-tittle profession-details">
-            <h2>DESKRIPSI PRODUK</h2>
+            <h2>DESKRIPSI JASA & LAYANAN</h2>
             <p>{!! nl2br($produk->deskripsi) !!}</p>
         </div>
     </div>
@@ -55,7 +55,7 @@
 <div class="slider-area2 container pt-100 pb-100">
     <div class="hero-cap hero-cap2">
         <div class="d-flex flex-column flex-md-row align-items-center justify-content-sm-center justify-content-md-between text-center text-lg-left">
-            <h3>GAMBAR PRODUK</h3>
+            <h3>GAMBAR JASA & LAYANAN</h3>
         </div>
         <div id="gallery" class="row mt-5"></div>
         <div id="loading" class="row">

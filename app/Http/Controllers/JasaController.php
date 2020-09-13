@@ -14,13 +14,58 @@ class JasaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (auth()->user()) {
-            $products = Product::where('produk_atau_jasa',2)->orderBy('id', 'desc')->paginate(15);
+            $products = Product::where('produk_atau_jasa',2)->latest()->paginate(9);
+
+            if ($request->produk) {
+                if ($request->kategori) {
+                    if ($request->sub_kategori) {
+                        $products = Product::where('produk_atau_jasa',2)->where('produk', $request->produk)->where('kategori', $request->kategori)->where('sub_kategori', $request->sub_kategori)->latest()->paginate(9);
+                    } else {
+                        $products = Product::where('produk_atau_jasa',2)->where('produk', $request->produk)->where('kategori', $request->kategori)->latest()->paginate(9);
+                    }
+                } else {
+                    $products = Product::where('produk_atau_jasa',2)->where('produk', $request->produk)->latest()->paginate(9);
+                }
+            }
+
+            if ($request->cari) {
+                $products = Product::where('produk_atau_jasa',2)->where(function($produk) use ($request){
+                    $produk->where('nama_produk','like', "%$request->cari%");
+                    $produk->orWhere('produk','like', "%$request->cari%");
+                    $produk->orWhere('kategori','like', "%$request->cari%");
+                    $produk->orWhere('sub_kategori','like', "%$request->cari%");
+                })->latest()->paginate(9);
+            }
+
         } else {
-            $products = Product::whereHas('images')->where('produk_atau_jasa',2)->orderBy('id', 'desc')->paginate(15);
+            $products = Product::whereHas('images')->where('produk_atau_jasa',2)->latest()->paginate(9);
+
+            if ($request->produk) {
+                if ($request->kategori) {
+                    if ($request->sub_kategori) {
+                        $products = Product::whereHas('images')->where('produk_atau_jasa',2)->where('produk', $request->produk)->where('kategori', $request->kategori)->where('sub_kategori', $request->sub_kategori)->latest()->paginate(9);
+                    } else {
+                        $products = Product::whereHas('images')->where('produk_atau_jasa',2)->where('produk', $request->produk)->where('kategori', $request->kategori)->latest()->paginate(9);
+                    }
+                } else {
+                    $products = Product::whereHas('images')->where('produk_atau_jasa',2)->where('produk', $request->produk)->latest()->paginate(9);
+                }
+            }
+
+            if ($request->cari) {
+                $products = Product::whereHas('images')->where('produk_atau_jasa',2)->where(function($produk) use ($request){
+                    $produk->where('nama_produk','like', "%$request->cari%");
+                    $produk->orWhere('produk','like', "%$request->cari%");
+                    $produk->orWhere('kategori','like', "%$request->cari%");
+                    $produk->orWhere('sub_kategori','like', "%$request->cari%");
+                })->latest()->paginate(9);
+            }
         }
+
+        $products->appends(request()->input())->links();
 
         return view('jasa.index', compact('products'));
     }
@@ -47,7 +92,7 @@ class JasaController extends Controller
             'produk_atau_jasa'  =>  ['required'],
             'nama_produk'       =>  ['required','string','max:168'],
             'produk'            =>  ['required','string','max:64'],
-            'kategori'          =>  ['nullable','string','max:64'],
+            'kategori'          =>  ['nullable','string','max:64','required_with:sub_kategori'],
             'sub_kategori'      =>  ['nullable','string','max:64'],
             'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
@@ -57,32 +102,41 @@ class JasaController extends Controller
             'olx'               =>  ['nullable'],
         ]);
 
-        $jasa = Product::create($data);
-        return redirect()->route('jasa.edit', $jasa)->with('success', 'Jasa & Layanan berhasil ditambahkan');
+        $produk = Product::create($data);
+        return redirect()->route('jasa.edit', $produk)->with('success', 'Jasa & Layanan berhasil ditambahkan, HARAP MENAMBAHKAN GAMBAR AGAR PRODUK DAPAT DILIHAT PELANGGAN');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $jasa
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $jasa, $slug)
+    public function show(Product $produk, $slug)
     {
-        if (Str::slug($jasa->nama_produk) != $slug) {
+        if (Str::slug($produk->nama_produk) != $slug) {
             return abort(404);
         }
+
+        if ($produk->produk_atau_jasa != 2) {
+            return abort(404);
+        }
+
         return view('jasa.show', compact('produk'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $jasa
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $jasa)
+    public function edit(Product $produk)
     {
+        if ($produk->produk_atau_jasa != 2) {
+            return abort(404);
+        }
+
         return view('jasa.edit', compact('produk'));
     }
 
@@ -90,16 +144,16 @@ class JasaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $jasa
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $jasa)
+    public function update(Request $request, Product $produk)
     {
         $data = $request->validate([
             'produk_atau_jasa'  =>  ['required'],
             'nama_produk'       =>  ['required','string','max:168'],
             'produk'            =>  ['required','string','max:64'],
-            'kategori'          =>  ['nullable','string','max:64'],
+            'kategori'          =>  ['nullable','string','max:64','required_with:sub_kategori'],
             'sub_kategori'      =>  ['nullable','string','max:64'],
             'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
@@ -109,24 +163,24 @@ class JasaController extends Controller
             'olx'               =>  ['nullable'],
         ]);
 
-        $jasa->update($data);
+        $produk->update($data);
         return redirect()->back()->with('success', 'Jasa & Layanan berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $jasa
+     * @param  \App\Product  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $jasa)
+    public function destroy(Product $produk)
     {
-        foreach ($jasa->images as $image) {
+        foreach ($produk->images as $image) {
             File::delete(storage_path('app/'.$image->foto));
             $image->delete();
         }
 
-        $jasa->delete();
+        $produk->delete();
         return redirect()->back()->with('success', 'Jasa & Layanan berhasil dihapus');
     }
 }

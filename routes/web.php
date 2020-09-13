@@ -13,14 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('beranda');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/produk', 'ProductController@index')->name('produk.index');
 Route::get('/produk/{produk}/{slug}', 'ProductController@show')->name('produk.show');
 Route::get('/jasa', 'JasaController@index')->name('jasa.index');
-Route::get('/jasa/{jasa}/{slug}', 'JasaController@show')->name('jasa.show');
+Route::get('/jasa/{produk}/{slug}', 'JasaController@show')->name('jasa.show');
 Route::get('/image/{id}', 'ImageController@show')->name('image.show');
 
 Route::group(['middleware' => ['web', 'guest']], function () {
@@ -34,7 +32,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/tambah-produk', 'ProductController@create')->name('jasa.create');
     Route::get('/edit-produk/{produk}', 'ProductController@edit')->name('produk.edit');
     Route::get('/tambah-jasa', 'JasaController@create')->name('jasa.create');
-    Route::get('/edit-jasa/{jasa}', 'JasaController@edit')->name('jasa.edit');
+    Route::get('/edit-jasa/{produk}', 'JasaController@edit')->name('jasa.edit');
     Route::post('/keluar', 'AuthController@keluar')->name('keluar');
     Route::post('/image', 'ImageController@store')->name('image.store');
     Route::delete('/image/{image}', 'ImageController@destroy')->name('image.destroy');

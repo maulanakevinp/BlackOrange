@@ -17,15 +17,55 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if (auth()->user()) {
-            $products = Product::where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(9);
-            if ($request->kategori) {
-                $products = $products->where('kategori', $request->kategori);
+            $products = Product::where('produk_atau_jasa',1)->latest()->paginate(9);
+
+            if ($request->produk) {
+                if ($request->kategori) {
+                    if ($request->sub_kategori) {
+                        $products = Product::where('produk_atau_jasa',1)->where('produk', $request->produk)->where('kategori', $request->kategori)->where('sub_kategori', $request->sub_kategori)->latest()->paginate(9);
+                    } else {
+                        $products = Product::where('produk_atau_jasa',1)->where('produk', $request->produk)->where('kategori', $request->kategori)->latest()->paginate(9);
+                    }
+                } else {
+                    $products = Product::where('produk_atau_jasa',1)->where('produk', $request->produk)->latest()->paginate(9);
+                }
             }
+
+            if ($request->cari) {
+                $products = Product::where('produk_atau_jasa',1)->where(function($produk) use ($request){
+                    $produk->where('nama_produk','like', "%$request->cari%");
+                    $produk->orWhere('produk','like', "%$request->cari%");
+                    $produk->orWhere('kategori','like', "%$request->cari%");
+                    $produk->orWhere('sub_kategori','like', "%$request->cari%");
+                })->latest()->paginate(9);
+            }
+
         } else {
-            $products = Product::whereHas('images')->where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(9);
+            $products = Product::whereHas('images')->where('produk_atau_jasa',1)->latest()->paginate(9);
+
+            if ($request->produk) {
+                if ($request->kategori) {
+                    if ($request->sub_kategori) {
+                        $products = Product::whereHas('images')->where('produk_atau_jasa',1)->where('produk', $request->produk)->where('kategori', $request->kategori)->where('sub_kategori', $request->sub_kategori)->latest()->paginate(9);
+                    } else {
+                        $products = Product::whereHas('images')->where('produk_atau_jasa',1)->where('produk', $request->produk)->where('kategori', $request->kategori)->latest()->paginate(9);
+                    }
+                } else {
+                    $products = Product::whereHas('images')->where('produk_atau_jasa',1)->where('produk', $request->produk)->latest()->paginate(9);
+                }
+            }
+
+            if ($request->cari) {
+                $products = Product::whereHas('images')->where('produk_atau_jasa',1)->where(function($produk) use ($request){
+                    $produk->where('nama_produk','like', "%$request->cari%");
+                    $produk->orWhere('produk','like', "%$request->cari%");
+                    $produk->orWhere('kategori','like', "%$request->cari%");
+                    $produk->orWhere('sub_kategori','like', "%$request->cari%");
+                })->latest()->paginate(9);
+            }
         }
 
-        $products->appends($request->only('cari'));
+        $products->appends(request()->input())->links();
 
         return view('produk.index', compact('products'));
     }
@@ -52,7 +92,7 @@ class ProductController extends Controller
             'produk_atau_jasa'  =>  ['required'],
             'nama_produk'       =>  ['required','string','max:168'],
             'produk'            =>  ['required','string','max:64'],
-            'kategori'          =>  ['nullable','string','max:64'],
+            'kategori'          =>  ['nullable','string','max:64','required_with:sub_kategori'],
             'sub_kategori'      =>  ['nullable','string','max:64'],
             'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
@@ -63,7 +103,7 @@ class ProductController extends Controller
         ]);
 
         $produk = Product::create($data);
-        return redirect()->route('produk.edit', $produk)->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->route('produk.edit', $produk)->with('success', 'Produk berhasil ditambahkan, HARAP MENAMBAHKAN GAMBAR AGAR PRODUK DAPAT DILIHAT PELANGGAN');
     }
 
     /**
@@ -77,6 +117,11 @@ class ProductController extends Controller
         if (Str::slug($produk->nama_produk) != $slug) {
             return abort(404);
         }
+
+        if ($produk->produk_atau_jasa != 1) {
+            return abort(404);
+        }
+
         return view('produk.show', compact('produk'));
     }
 
@@ -88,6 +133,10 @@ class ProductController extends Controller
      */
     public function edit(Product $produk)
     {
+        if ($produk->produk_atau_jasa != 1) {
+            return abort(404);
+        }
+
         return view('produk.edit', compact('produk'));
     }
 
@@ -104,7 +153,7 @@ class ProductController extends Controller
             'produk_atau_jasa'  =>  ['required'],
             'nama_produk'       =>  ['required','string','max:168'],
             'produk'            =>  ['required','string','max:64'],
-            'kategori'          =>  ['nullable','string','max:64'],
+            'kategori'          =>  ['nullable','string','max:64','required_with:sub_kategori'],
             'sub_kategori'      =>  ['nullable','string','max:64'],
             'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
