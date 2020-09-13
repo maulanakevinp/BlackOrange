@@ -10,8 +10,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'nama_produk'       => $faker->sentence(3),
         'produk_atau_jasa'  => 1,
         'produk'            => 'Samsung',
-        'kategori'          => 'DVR',
-        'sub_kategori'      => "IP CAMERA",
+        'kategori'          => 'Camera',
+        'sub_kategori'      => null,
         'deskripsi'         => $faker->sentence(12),
         'harga'             => $faker->numberBetween(50000, 2500000),
     ];

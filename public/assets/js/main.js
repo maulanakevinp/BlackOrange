@@ -249,6 +249,13 @@
         $(this).siblings('.invalid-feedback').html('');
     });
 
+    $(".pagination").addClass("justify-content-center");
+
+    if ($(".sub-submenu").children().length == 0) {
+        console.log("none");
+        $(".sub-submenu").css('display', 'none');
+    }
+
 
 
 

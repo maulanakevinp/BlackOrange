@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class ProductController extends Controller
+class JasaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,12 @@ class ProductController extends Controller
     public function index()
     {
         if (auth()->user()) {
-            $products = Product::where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(15);
+            $products = Product::where('produk_atau_jasa',2)->orderBy('id', 'desc')->paginate(15);
         } else {
-            $products = Product::whereHas('images')->where('produk_atau_jasa',1)->orderBy('id', 'desc')->paginate(15);
+            $products = Product::whereHas('images')->where('produk_atau_jasa',2)->orderBy('id', 'desc')->paginate(15);
         }
 
-        return view('produk.index', compact('products'));
+        return view('jasa.index', compact('products'));
     }
 
     /**
@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        return view('jasa.create');
     }
 
     /**
@@ -57,43 +57,43 @@ class ProductController extends Controller
             'olx'               =>  ['nullable'],
         ]);
 
-        $produk = Product::create($data);
-        return redirect()->route('produk.edit', $produk)->with('success', 'Produk berhasil ditambahkan');
+        $jasa = Product::create($data);
+        return redirect()->route('jasa.edit', $jasa)->with('success', 'Jasa & Layanan berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $produk
+     * @param  \App\Product  $jasa
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $produk, $slug)
+    public function show(Product $jasa, $slug)
     {
-        if (Str::slug($produk->nama_produk) != $slug) {
+        if (Str::slug($jasa->nama_produk) != $slug) {
             return abort(404);
         }
-        return view('produk.show', compact('produk'));
+        return view('jasa.show', compact('produk'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $produk
+     * @param  \App\Product  $jasa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $produk)
+    public function edit(Product $jasa)
     {
-        return view('produk.edit', compact('produk'));
+        return view('jasa.edit', compact('produk'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $produk
+     * @param  \App\Product  $jasa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $produk)
+    public function update(Request $request, Product $jasa)
     {
         $data = $request->validate([
             'produk_atau_jasa'  =>  ['required'],
@@ -109,24 +109,24 @@ class ProductController extends Controller
             'olx'               =>  ['nullable'],
         ]);
 
-        $produk->update($data);
-        return redirect()->back()->with('success', 'Produk berhasil diperbarui');
+        $jasa->update($data);
+        return redirect()->back()->with('success', 'Jasa & Layanan berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $produk
+     * @param  \App\Product  $jasa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $produk)
+    public function destroy(Product $jasa)
     {
-        foreach ($produk->images as $image) {
+        foreach ($jasa->images as $image) {
             File::delete(storage_path('app/'.$image->foto));
             $image->delete();
         }
 
-        $produk->delete();
-        return redirect()->back()->with('success', 'Produk berhasil dihapus');
+        $jasa->delete();
+        return redirect()->back()->with('success', 'Jasa & Layanan berhasil dihapus');
     }
 }

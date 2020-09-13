@@ -21,7 +21,7 @@
 <div class="services-area pt-100 pb-100">
     <div class="container">
         <div class="row">
-            @foreach ($products as $product)
+            @forelse ($products as $product)
                 <div class="col-lg-4 col-md-6 col-sm-10 mb-5">
                     <div class="single-services mb-200">
                         @if (count($product->images) > 0)
@@ -60,7 +60,15 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-body text-center">
+                            <h4 class="text-dark">Data belum tersedia</h4>
+                        </div>
+                    </div>
+                </div>
+            @endforelse
         </div>
         {{ $products->links() }}
     </div>
