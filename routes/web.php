@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index');
-
+Route::get('/tentang-kami', 'HomeController@tentangKami');
 Route::get('/produk', 'ProductController@index')->name('produk.index');
 Route::get('/produk/{produk}/{slug}', 'ProductController@show')->name('produk.show');
 Route::get('/jasa', 'JasaController@index')->name('jasa.index');

@@ -19,7 +19,19 @@ class UtilitySeeder extends Seeder
             'slogan'                    => 'Specialist CCTV & Security System',
             'kalimat_penarik_pelanggan' => 'Apakah anda mencari specialist cctv dan security system?',
             'alamat_perusahaan'         => 'Perum BSI 2 Blok G No.7 RT 02/12, Pengasinan Sawangan, Depok',
-            'tentang_kami'              => '<p>PT. Hitam Oranye Indonesia adalah Perusahan yang bergerak di bidang layanan jasa dan penjualan product dan Security System dalam bidang Teknologi dan Telekomunikasi.</p><p>Prioriats kami adalah kepuasan konsumen untuk mencapai serta menjaga hal tersebut, selain menyediakan product berkualitas dan bergaransi kami menyediakan layanan online support, serta tenaga Proffesional yang siap melayani konsumen di seluruh Indonesia. Dengan pengalama yang kami miliki, kami siap menjadi solusi untuk semua kebutuhan Security dan telekomuniukasi anda dimanapun.</p>',
+            'tentang_kami'              => 'PT. Hitam Oranye Indonesia adalah Perusahan yang bergerak di bidang layanan jasa dan penjualan product dan Security System dalam bidang Teknologi dan Telekomunikasi.
+
+            Prioritas kami adalah kepuasan konsumen untuk mencapai serta menjaga hal tersebut, selain menyediakan product berkualitas dan bergaransi kami menyediakan layanan online support, serta tenaga Proffesional yang siap melayani konsumen di seluruh Indonesia. Dengan pengalama yang kami miliki, kami siap menjadi solusi untuk semua kebutuhan Security dan telekomuniukasi anda dimanapun.',
+            'visi'                      => 'Menjadi perusahaan terpercaya sebagai parter terbaik dan terdepan di Indonesia pada bidang security system',
+            'misi'                      => 'Menyediakan produk-produk yang berkualitas dengan harga terjangkau dan bergaransi.
+
+            Menyerdiakan tenaga teknisi yang berpengalamandi bidangnya, dan mengedepankan kerjasama team dan profisionaliseme terbaik.
+
+            Memberikan konsultasi dan pengetahuan umumtentang manfaat dan penting nya CCTV SYSTEM, PABX, ALARM SYSTEM, ACCESS CONTROL serta JARINGAN DATA (LAN/WAN) bagi perusahaan maupun perorangan.
+
+            Memberikan kemudahan dan kepuasan kepada konsumen dan calon konsumen melalui pelayanan Prima.
+
+            Membangun kerjasama dan kemitraan usaha / mitra kerja yang saling mengguntungkan satu sama lain.',
             'nomor_telepon'             => '081380809602',
             'nomor_whatsapp'            => '+6281380809602',
             'email'                     => 'admin@blackorangecctv.com',

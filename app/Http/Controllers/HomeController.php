@@ -22,4 +22,9 @@ class HomeController extends Controller
             'brands'        => Brand::all()
         ]);
     }
+
+    public function tentangKami()
+    {
+        return view('tentang-kami', ['utility' => Utility::find(1)]);
+    }
 }

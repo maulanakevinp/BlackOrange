@@ -35,12 +35,19 @@
 <!-- Our Info start -->
 
 <!--? Professional Services Start -->
-<div id="tentang-kami" class="profession-caption mt-5">
+<div class="profession-caption mt-5">
     <div class="container">
-        <!-- Section Tittle -->
-        <div class="section-tittle profession-details">
-            <h2>Tentang Kami</h2>
-            {!! $utility->tentang_kami !!}
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <!-- Section Tittle -->
+                <div class="section-tittle profession-details">
+                    <h2>Tentang Kami</h2>
+                    <p>{!! nl2br($utility->tentang_kami) !!}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <a href="/tentang-kami" class="btn btn3">Lihat Lebih Lengkap Tentang Kami</a>
+            </div>
         </div>
     </div>
 </div>

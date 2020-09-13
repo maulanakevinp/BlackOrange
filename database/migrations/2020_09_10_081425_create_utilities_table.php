@@ -22,6 +22,8 @@ class CreateUtilitiesTable extends Migration
             $table->text('kalimat_penarik_pelanggan');
             $table->text('alamat_perusahaan');
             $table->text('tentang_kami');
+            $table->text('visi');
+            $table->text('misi');
             $table->string('nomor_telepon', 16);
             $table->string('nomor_whatsapp', 16);
             $table->string('email', 30);

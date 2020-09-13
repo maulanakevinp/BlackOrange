@@ -12,7 +12,7 @@
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    {!! App\Utility::find(1)->tentang_kami !!}
+                                    <p>{!! nl2br(App\Utility::find(1)->tentang_kami) !!}</p>
                                 </div>
                             </div>
                         </div>
