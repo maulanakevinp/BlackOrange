@@ -30,13 +30,13 @@
 @section('content')
 <div class="slider-area2 container pt-100 pb-100">
     <div class="hero-cap hero-cap2">
-        <form autocomplete="off" class="mt-5" action="{{ route('utility.update') }}" method="post">
+        <form autocomplete="off" class="mt-5" action="{{ route('utility.update') }}" method="post" enctype="multipart/form-data">
             @csrf @method('patch')
             <div class="row justify-content-center text-white">
                 <div class="col-lg-6 mb-3">
                     <div class="form-group">
                         <label for="logo">Logo Website</label><br>
-                        <img title="Ganti logo website" onclick="document.getElementById('logo').click()" id="display-logo" src="{{ asset(Storage::url($utility->logo)) }}" alt="Logo Website" width="100px" height="100px">
+                        <img title="Ganti logo website" onclick="document.getElementById('logo').click()" id="display-logo" src="{{ asset(Storage::url($utility->logo)) }}" alt="Logo Website" style="max-height: 100px">
                         <input type="file" name="logo" id="logo" style="display: none">
                         @error('logo') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
