@@ -3,6 +3,7 @@
 @section('title', App\Utility::find(1)->nama_website . ' - Pengaturan Website')
 
 @section('styles')
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
 <style>
     #display-logo:hover{
         cursor: pointer;
@@ -73,7 +74,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <div class="form-group">
-                        <label for="maps">Maps</label>
+                        <label for="maps">Maps</label> <a href="/storage/bantuan/maps.webm" title="bantuan" data-fancybox><i class="fas fa-question-circle"></i></a>
                         <input type="text" name="maps" id="maps" class="form-control @error('maps') is-invalid @enderror" placeholder="Masukkan Maps ..." value="{{ old('maps', $utility->maps) }}">
                         @error('maps') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
@@ -140,6 +141,7 @@
 @endsection
 
 @push('scripts')
+<script src="/assets/js/jquery.fancybox.js"></script>
 <script>
     $(document).ready(function() {
         $("#logo").on('change', function(){
