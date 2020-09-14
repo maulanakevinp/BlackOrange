@@ -57,12 +57,12 @@
                     </div>
                     <div class="form-group">
                         <label for="nomor_telepon">Nomor Telepon</label>
-                        <input type="number" name="nomor_telepon" id="nomor_telepon" class="form-control @error('nomor_telepon') is-invalid @enderror" placeholder="Masukkan Nomor Telepon ..." value="{{ old('nomor_telepon', $utility->nomor_telepon) }}">
+                        <input type="text" onkeypress="return hanyaAngka(event)" name="nomor_telepon" id="nomor_telepon" class="form-control @error('nomor_telepon') is-invalid @enderror" placeholder="Masukkan Nomor Telepon ..." value="{{ old('nomor_telepon', $utility->nomor_telepon) }}">
                         @error('nomor_telepon') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="nomor_whatsapp">Nomor WhatsApp</label>
-                        <input type="text" name="nomor_whatsapp" id="nomor_whatsapp" class="form-control @error('nomor_whatsapp') is-invalid @enderror" placeholder="Masukkan Nomor WhatsApp ..." value="{{ old('nomor_whatsapp', $utility->nomor_whatsapp) }}">
+                        <input type="text" onkeypress="return hanyaAngka(event)" name="nomor_whatsapp" id="nomor_whatsapp" class="form-control @error('nomor_whatsapp') is-invalid @enderror" placeholder="Masukkan Nomor WhatsApp ..." value="{{ old('nomor_whatsapp', $utility->nomor_whatsapp) }}">
                         @error('nomor_whatsapp') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
@@ -79,22 +79,22 @@
                     </div>
                     <div class="form-group">
                         <label for="link_facebook">Link Facebook</label>
-                        <input type="text" name="link_facebook" id="link_facebook" class="form-control @error('link_facebook') is-invalid @enderror" placeholder="Masukkan Link Facebook ..." value="{{ old('link_facebook', $utility->link_facebook) }}">
+                        <input type="url" name="link_facebook" id="link_facebook" class="form-control @error('link_facebook') is-invalid @enderror" placeholder="Masukkan Link Facebook ..." value="{{ old('link_facebook', $utility->link_facebook) }}">
                         @error('link_facebook') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="link_instagram">Link Instagram</label>
-                        <input type="text" name="link_instagram" id="link_instagram" class="form-control @error('link_instagram') is-invalid @enderror" placeholder="Masukkan Link Instagram ..." value="{{ old('link_instagram', $utility->link_instagram) }}">
+                        <input type="url" name="link_instagram" id="link_instagram" class="form-control @error('link_instagram') is-invalid @enderror" placeholder="Masukkan Link Instagram ..." value="{{ old('link_instagram', $utility->link_instagram) }}">
                         @error('link_instagram') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="link_twitter">Link Twitter</label>
-                        <input type="text" name="link_twitter" id="link_twitter" class="form-control @error('link_twitter') is-invalid @enderror" placeholder="Masukkan Link Twitter ..." value="{{ old('link_twitter', $utility->link_twitter) }}">
+                        <input type="url" name="link_twitter" id="link_twitter" class="form-control @error('link_twitter') is-invalid @enderror" placeholder="Masukkan Link Twitter ..." value="{{ old('link_twitter', $utility->link_twitter) }}">
                         @error('link_twitter') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="link_youtube">Link Youtube</label>
-                        <input type="text" name="link_youtube" id="link_youtube" class="form-control @error('link_youtube') is-invalid @enderror" placeholder="Masukkan Link Youtube ..." value="{{ old('link_youtube', $utility->link_youtube) }}">
+                        <input type="url" name="link_youtube" id="link_youtube" class="form-control @error('link_youtube') is-invalid @enderror" placeholder="Masukkan Link Youtube ..." value="{{ old('link_youtube', $utility->link_youtube) }}">
                         @error('link_youtube') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">

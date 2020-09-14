@@ -201,7 +201,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-3">
-                <a href="https://api.whatsapp.com/send?phone={{ $utility->nomor_whatsapp }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%20dengan%20produk%20dan%20jasa%20yang%20anda%20tawarkan" class="btn btn-black f-right">Hubungi kami segera</a>
+                <a href="https://api.whatsapp.com/send?phone={{ whatsapp($utility->nomor_whatsapp) }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%20dengan%20produk%20dan%20jasa%20yang%20anda%20tawarkan" class="btn btn-black f-right">Hubungi kami segera</a>
             </div>
         </div>
     </div>

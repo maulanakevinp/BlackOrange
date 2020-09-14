@@ -52,7 +52,7 @@
     @include('layouts.components.footer')
 
     <div id="wa-position">
-        <a title="Kirim Pesan WhatsApp" href="https://api.whatsapp.com/send?phone={{ App\Utility::find(1)->nomor_whatsapp }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%20dengan%20produk%20dan%20jasa%20yang%20anda%20tawarkan" target="_blank" style="width: 80px;height: 80px;">
+        <a title="Kirim Pesan WhatsApp" href="https://api.whatsapp.com/send?phone={{ whatsapp(App\Utility::find(1)->nomor_whatsapp) }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%20dengan%20produk%20dan%20jasa%20yang%20anda%20tawarkan" target="_blank" style="width: 80px;height: 80px;">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>

@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-3 mb-3">
-                <a target="_blank" href="https://api.whatsapp.com/send?phone={{ App\Utility::find(1)->nomor_whatsapp }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%20dengan%20produk%20ini%0A{{ URL::current() }}" class="btn btn-black f-right">Hubungi kami segera</a>
+                <a target="_blank" href="https://api.whatsapp.com/send?phone={{ whatsapp(App\Utility::find(1)->nomor_whatsapp) }}&text=Halo%20Black%20Orange%20CCTV%20saya%20tertarik%20dengan%20produk%20ini%0A{{ URL::current() }}" class="btn btn-black f-right">Hubungi kami segera</a>
             </div>
             @if ($produk->bukalapak || $produk->tokopedia || $produk->shopee || $produk->olx)
                 <div class="col-12 text-center">

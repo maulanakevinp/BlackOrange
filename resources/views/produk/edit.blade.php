@@ -81,22 +81,22 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="bukalapak">Link Bukalapak</label>
-                                <input type="text" name="bukalapak" id="bukalapak" class="form-control @error('bukalapak') is-invalid @enderror" placeholder="Masukkan Link Bukalapak ..." value="{{ old('bukalapak', $produk->bukalapak) }}">
+                                <input type="url" name="bukalapak" id="bukalapak" class="form-control @error('bukalapak') is-invalid @enderror" placeholder="Masukkan Link Bukalapak ..." value="{{ old('bukalapak', $produk->bukalapak) }}">
                                 @error('bukalapak') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label for="tokopedia">Link Tokopedia</label>
-                                <input type="text" name="tokopedia" id="tokopedia" class="form-control @error('tokopedia') is-invalid @enderror" placeholder="Masukkan Link Tokopedia ..." value="{{ old('tokopedia', $produk->tokopedia) }}">
+                                <input type="url" name="tokopedia" id="tokopedia" class="form-control @error('tokopedia') is-invalid @enderror" placeholder="Masukkan Link Tokopedia ..." value="{{ old('tokopedia', $produk->tokopedia) }}">
                                 @error('tokopedia') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label for="olx">Link OLX</label>
-                                <input type="text" name="olx" id="olx" class="form-control @error('olx') is-invalid @enderror" placeholder="Masukkan Link OLX ..." value="{{ old('olx', $produk->olx) }}">
+                                <input type="url" name="olx" id="olx" class="form-control @error('olx') is-invalid @enderror" placeholder="Masukkan Link OLX ..." value="{{ old('olx', $produk->olx) }}">
                                 @error('olx') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label for="shopee">Link Shopee</label>
-                                <input type="text" name="shopee" id="shopee" class="form-control @error('shopee') is-invalid @enderror" placeholder="Masukkan Link Shopee ..." value="{{ old('shopee', $produk->shopee) }}">
+                                <input type="url" name="shopee" id="shopee" class="form-control @error('shopee') is-invalid @enderror" placeholder="Masukkan Link Shopee ..." value="{{ old('shopee', $produk->shopee) }}">
                                 @error('shopee') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                         </div>
