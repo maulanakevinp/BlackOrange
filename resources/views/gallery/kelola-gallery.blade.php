@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', App\Utility::find(1)->nama_website . ' - Slideshow')
+@section('title', App\Utility::find(1)->nama_website . ' - Gallery')
 
 @section('styles')
 <link rel="stylesheet" href="/assets/css/dropzone.css">
@@ -47,7 +47,7 @@
             <div class="row justify-content-center text-white">
                 <div class="col-lg-6">
                     <div class="pt-80 hero-cap hero-cap2 text-center">
-                        <h2>SLIDESHOW</h2>
+                        <h2 class="text-center">GALLERY</h2>
                         <a href="#tambah-gambar" data-toggle="modal" class="btn header-btn mb-3">Tambah Gambar</a>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route("slideshow.store") }}" class="dropzone dz-clickable" id="dropzoneForm" method="POST">
+                <form action="{{ route("gallery.store") }}" class="dropzone dz-clickable" id="dropzoneForm" method="POST">
                     @csrf
                     <div class="dz-default dz-message"><span class="h3 mb-0 text-primary">Click or drop files here to upload - max file size is 2mb</span></div>
                 </form>
@@ -172,7 +172,7 @@
         if (id.length > 0) {
             if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
                 $.ajax({
-                    url     : "/delete-slideshows",
+                    url     : "/delete-galleries",
                     method  : "delete",
                     data : {
                         _token  : "{{ csrf_token() }}",
@@ -212,7 +212,7 @@
         const btn = this;
         if(confirm('Apakah anda yakin ingin menghapus foto ini? ')){
             $.ajax({
-                url: "/slideshow/" + $(btn).data('id'),
+                url: "/gallery/" + $(btn).data('id'),
                 method: "delete",
                 data: {
                     _token : "{{ csrf_token() }}"
@@ -236,7 +236,7 @@
 
     function load_more(page) {
         $.ajax({
-            url: "/load-slideshow?page="+page,
+            url: "/load-gallery?page="+page,
             method: "GET",
             beforeSend: function () {
                 $("#loading").show();

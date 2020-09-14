@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TestimonialController extends Controller
 {
@@ -14,19 +15,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        return view('testimoni.index', [
-            'testimonials'  => Testimonial::all()
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('testimonial');
     }
 
     /**
@@ -37,41 +26,32 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $photos = $request->file('file');
+
+        if (!is_array($photos)) {
+            $photos = [$photos];
+        }
+
+        for ($i = 0; $i < count($photos); $i++) {
+            Testimonial::create([
+                'foto'      => $photos[$i]->store('public/testimonial'),
+            ]);
+        }
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function show(Testimonial $testimonial)
+    public function show()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Testimonial  $testimonial
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Testimonial $testimonial)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Testimonial  $testimonial
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Testimonial $testimonial)
-    {
-        //
+        $testimonials = Testimonial::paginate(9);
+        return response()->json($testimonials);
     }
 
     /**
@@ -80,8 +60,35 @@ class TestimonialController extends Controller
      * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimonial $testimonial)
+    public function destroy($id)
     {
-        //
+        $testimonial = Testimonial::findOrFail($id);
+        File::delete(storage_path('app/'.$testimonial->foto));
+        $testimonial->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gambar berhasil dihapus'
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Testimonial  $testimonial
+     * @return \Illuminate\Http\Response
+     */
+    public function destroys(Request $request)
+    {
+        foreach ($request->id as $id) {
+            $testimonial = Testimonial::findOrFail($id);
+            File::delete(storage_path('app/'.$testimonial->foto));
+            $testimonial->delete();
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gambar berhasil dihapus'
+        ]);
     }
 }

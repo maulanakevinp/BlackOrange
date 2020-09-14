@@ -217,7 +217,7 @@
     load_more(page);
 
     $(window).scroll(function() { //detect page scroll
-        if($(window).scrollTop() + $(window).height() >= $(document).height()) { //if user scrolled from top to bottom of the page
+        if($(window).scrollTop() + $(window).height() >= $(document).height() - $("footer").height()) { //if user scrolled from top to bottom of the page
             if (dataExists) {
                 page++; //page number increment
                 load_more(page); //load content

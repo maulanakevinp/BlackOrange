@@ -98,6 +98,7 @@
                                             <li><a href="/jasa">Kelola Jasa</a></li>
                                             <li><a href="/brand">Kelola Brand</a></li>
                                             <li><a href="/slideshow">Kelola Slideshow</a></li>
+                                            <li><a href="/kelola-gallery">Kelola Gallery</a></li>
                                             <li><a href="/testimoni">Kelola Testimoni</a></li>
                                             <li><a href="/pengaturan-website">Pengaturan Website</a></li>
                                             <li><a href="/ganti-password">Ganti Password</a></li>

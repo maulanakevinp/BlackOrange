@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class GalleryController extends Controller
 {
@@ -14,17 +15,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('gallery');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('gallery.index');
     }
 
     /**
@@ -35,41 +26,42 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $photos = $request->file('file');
+
+        if (!is_array($photos)) {
+            $photos = [$photos];
+        }
+
+        for ($i = 0; $i < count($photos); $i++) {
+            Gallery::create([
+                'foto'      => $photos[$i]->store('public/gallery'),
+            ]);
+        }
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function show(Gallery $gallery)
+    public function show()
     {
-        //
+        $galleries = Gallery::paginate(9);
+        return response()->json($galleries);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gallery $gallery)
+    public function edit()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Gallery  $gallery
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Gallery $gallery)
-    {
-        //
+        return view('gallery.kelola-gallery');
     }
 
     /**
@@ -78,8 +70,35 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function destroy($id)
     {
-        //
+        $gallery = Gallery::findOrFail($id);
+        File::delete(storage_path('app/'.$gallery->foto));
+        $gallery->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gambar berhasil dihapus'
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Gallery  $gallery
+     * @return \Illuminate\Http\Response
+     */
+    public function destroys(Request $request)
+    {
+        foreach ($request->id as $id) {
+            $gallery = Gallery::findOrFail($id);
+            File::delete(storage_path('app/'.$gallery->foto));
+            $gallery->delete();
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gambar berhasil dihapus'
+        ]);
     }
 }
