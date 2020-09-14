@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Utility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UtilityController extends Controller
 {
@@ -26,8 +27,39 @@ class UtilityController extends Controller
      * @param  \App\Utility  $utility
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Utility $utility)
+    public function update(Request $request)
     {
-        //
+        $utility = Utility::find(1);
+        $data = $request->validate([
+            'nama_website'              => ['required','string','max:32'],
+            'logo'                      => ['nullable','image','max:2048'],
+            'nama_perusahaan'           => ['required','string','max:128'],
+            'alamat_perusahaan'         => ['required','string'],
+            'nomor_telepon'             => ['required','string','max:16'],
+            'nomor_whatsapp'            => ['required','string','max:16'],
+            'email'                     => ['required','email','max:32'],
+            'maps'                      => ['nullable'],
+            'link_facebook'             => ['nullable'],
+            'link_instagram'            => ['nullable'],
+            'link_twitter'              => ['nullable'],
+            'link_youtube'              => ['nullable'],
+            'slogan'                    => ['required','string','max:64'],
+            'kalimat_penarik_pelanggan' => ['required','string','max:168'],
+            'tentang_kami'              => ['required'],
+            'visi'                      => ['required'],
+            'misi'                      => ['required'],
+        ]);
+
+        if ($request->logo) {
+            if ($utility->logo != "public/logo.png") {
+                File::delete(storage_path('app/'. $utility->logo));
+            }
+            $data['logo']   = $request->logo->store('public/logo');
+        } else {
+            $data['logo'] = $utility->logo;
+        }
+
+        $utility->update($data);
+        return redirect()->back()->with('success', 'Pengaturan Website berhasil diperbarui');
     }
 }

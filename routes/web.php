@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/edit-jasa/{produk}', 'JasaController@edit')->name('jasa.edit');
     Route::post('/keluar', 'AuthController@keluar')->name('keluar');
     Route::post('/image', 'ImageController@store')->name('image.store');
+    Route::patch('/pengaturan-website', 'UtilityController@update')->name('utility.update');
     Route::delete('/image/{image}', 'ImageController@destroy')->name('image.destroy');
     Route::delete('/delete-images', 'ImageController@destroys')->name('image.destroys');
     Route::resource('produk', 'ProductController')->except('index','create','show','edit');
