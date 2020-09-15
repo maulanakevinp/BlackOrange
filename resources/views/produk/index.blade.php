@@ -44,7 +44,13 @@
                             </div>
                         @endif
                         <div class="services-caption">
-                            <h3><a href="{{ route("produk.show", ['produk' => $product, 'slug' => Str::slug($product->nama_produk)]) }}" title="Detail Produk">{{ $product->nama_produk }}</a></h3>
+                            <h3>
+                                @if (count($product->images) > 0)
+                                    <a href="{{ route("produk.show", ['produk' => $product, 'slug' => Str::slug($product->nama_produk)]) }}" title="Detail Produk">{{ $product->nama_produk }}</a>
+                                @else
+                                    <a href="#" title="Detail Produk Tidak Tersedia Karena Tidak Ada Gambar">{{ $product->nama_produk }}</a>
+                                @endif
+                            </h3>
                             <p class="pera1 h4">
                                 Rp. {{ substr(number_format($product->harga, 2, ',', '.'),0,-3) }}
                             </p>

@@ -3,6 +3,7 @@
 @section('title', $produk->nama_produk . ' - ' . App\Utility::find(1)->nama_website)
 @section('description', $produk->nama_produk . '. Rp. ' . substr(number_format($produk->harga, 2, ',', '.'),0,-3))
 @section('styles')
+<meta property="og:image" content="{{ asset(Storage::url($produk->images[0]->foto)) }}">
 <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
 <style>
     img.zoom {

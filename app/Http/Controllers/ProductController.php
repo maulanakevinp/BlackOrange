@@ -122,6 +122,10 @@ class ProductController extends Controller
             return abort(404);
         }
 
+        if (count($produk->images) == 0) {
+            return abort(404);
+        }
+
         return view('produk.show', compact('produk'));
     }
 
