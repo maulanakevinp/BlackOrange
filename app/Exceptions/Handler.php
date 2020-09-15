@@ -52,11 +52,11 @@ class Handler extends ExceptionHandler
     {
         if($this->isHttpException($exception)){
             switch ($exception->getStatusCode()) {
-                case 403:
-                    return response()->view('errors', ['message' => $exception->getMessage()], $exception->getStatusCode());
-                    break;
                 case 404:
                     return response()->view('errors', ['message' => "Halaman Tidak Ditemukan"], $exception->getStatusCode());
+                    break;
+                default:
+                    return response()->view('errors', ['message' => $exception->getMessage()], $exception->getStatusCode());
                     break;
             }
         }
