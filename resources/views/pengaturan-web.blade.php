@@ -34,6 +34,7 @@
     <div class="hero-cap hero-cap2">
         <form autocomplete="off" class="mt-5" action="{{ route('utility.update') }}" method="post" enctype="multipart/form-data">
             @csrf @method('patch')
+            <p class="text-secondary">Tanda <span class="text-danger">*</span> = Wajib diisi</p>
             <div class="row justify-content-center text-white">
                 <div class="col-lg-6 mb-3">
                     <div class="form-group">
@@ -43,32 +44,32 @@
                         @error('logo') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nama_website">Nama Website</label>
+                        <label for="nama_website">Nama Website</label> <span class="text-danger">*</span>
                         <input type="text" name="nama_website" id="nama_website" class="form-control @error('nama_website') is-invalid @enderror" placeholder="Masukkan Nama Website ..." value="{{ old('nama_website', $utility->nama_website) }}">
                         @error('nama_website') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nama_perusahaan">Nama Perusahaan</label>
+                        <label for="nama_perusahaan">Nama Perusahaan</label> <span class="text-danger">*</span>
                         <input type="text" name="nama_perusahaan" id="nama_perusahaan" class="form-control @error('nama_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan ..." value="{{ old('nama_perusahaan', $utility->nama_perusahaan) }}">
                         @error('nama_perusahaan') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="alamat_perusahaan">Alamat Perusahaan</label>
+                        <label for="alamat_perusahaan">Alamat Perusahaan</label> <span class="text-danger">*</span>
                         <input type="text" name="alamat_perusahaan" id="alamat_perusahaan" class="form-control @error('alamat_perusahaan') is-invalid @enderror" placeholder="Masukkan Alamat Perusahaan ..." value="{{ old('alamat_perusahaan', $utility->alamat_perusahaan) }}">
                         @error('alamat_perusahaan') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nomor_telepon">Nomor Telepon</label>
+                        <label for="nomor_telepon">Nomor Telepon</label> <span class="text-danger">*</span>
                         <input type="text" onkeypress="return hanyaAngka(event)" name="nomor_telepon" id="nomor_telepon" class="form-control @error('nomor_telepon') is-invalid @enderror" placeholder="Masukkan Nomor Telepon ..." value="{{ old('nomor_telepon', $utility->nomor_telepon) }}">
                         @error('nomor_telepon') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nomor_whatsapp">Nomor WhatsApp</label>
+                        <label for="nomor_whatsapp">Nomor WhatsApp</label> <span class="text-danger">*</span>
                         <input type="text" onkeypress="return hanyaAngka(event)" name="nomor_whatsapp" id="nomor_whatsapp" class="form-control @error('nomor_whatsapp') is-invalid @enderror" placeholder="Masukkan Nomor WhatsApp ..." value="{{ old('nomor_whatsapp', $utility->nomor_whatsapp) }}">
                         @error('nomor_whatsapp') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email</label> <span class="text-danger">*</span>
                         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Nomor WhatsApp ..." value="{{ old('email', $utility->email) }}">
                         @error('email') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
@@ -100,33 +101,33 @@
                         @error('link_youtube') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="slogan">Slogan</label>
+                        <label for="slogan">Slogan</label> <span class="text-danger">*</span>
                         <input type="text" name="slogan" id="slogan" class="form-control @error('slogan') is-invalid @enderror" placeholder="Masukkan Slogan ..." value="{{ old('slogan', $utility->slogan) }}">
                         @error('slogan') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="kalimat_penarik_pelanggan">Kalimat Penarik Pelanggan</label>
+                        <label for="kalimat_penarik_pelanggan">Kalimat Penarik Pelanggan</label> <span class="text-danger">*</span>
                         <input type="text" name="kalimat_penarik_pelanggan" id="kalimat_penarik_pelanggan" class="form-control @error('kalimat_penarik_pelanggan') is-invalid @enderror" placeholder="Masukkan Kalimat Penarik Pelanggan ..." value="{{ old('kalimat_penarik_pelanggan', $utility->kalimat_penarik_pelanggan) }}">
                         @error('kalimat_penarik_pelanggan') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="col-12 mb-3">
                     <div class="form-group">
-                        <label for="tentang_kami">Tentang Kami</label>
+                        <label for="tentang_kami">Tentang Kami</label> <span class="text-danger">*</span>
                         <textarea name="tentang_kami" id="tentang_kami" class="form-control @error('tentang_kami') is-invalid @enderror" placeholder="Masukkan Tentang Kami ..." rows="10">{{ old('tentang_kami', $utility->tentang_kami) }}</textarea>
                         @error('tentang_kami') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="col-lg-6 mb-3">
                     <div class="form-group">
-                        <label for="visi">Visi</label>
+                        <label for="visi">Visi</label> <span class="text-danger">*</span>
                         <textarea name="visi" id="visi" class="form-control @error('visi') is-invalid @enderror" placeholder="Masukkan Visi ..." rows="10">{{ old('visi', $utility->visi) }}</textarea>
                         @error('visi') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="col-lg-6 mb-3">
                     <div class="form-group">
-                        <label for="misi">Misi</label>
+                        <label for="misi">Misi</label> <span class="text-danger">*</span>
                         <textarea name="misi" id="misi" class="form-control @error('misi') is-invalid @enderror" placeholder="Masukkan Misi ..." rows="10">{{ old('misi', $utility->misi) }}</textarea>
                         @error('misi') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>

@@ -12,15 +12,16 @@
                 <form autocomplete="off" class="mt-5" action="{{ route('jasa.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="produk_atau_jasa" value="2">
+                    <p class="text-secondary">Tanda <span class="text-danger">*</span> = Wajib diisi</p>
                     <div class="row justify-content-center text-white">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="nama_produk">Nama</label>
+                                <label for="nama_produk">Nama</label> <span class="text-danger">*</span>
                                 <input type="nama_produk" name="nama_produk" id="nama_produk" class="form-control @error('nama_produk') is-invalid @enderror" placeholder="Masukkan Nama ..." value="{{ old('nama_produk') }}">
                                 @error('nama_produk') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
-                                <label for="produk">Produk</label>
+                                <label for="produk">Produk</label> <span class="text-danger">*</span>
                                 <input type="text" name="produk" id="produk" class="form-control @error('produk') is-invalid @enderror" placeholder="Masukkan Produk ..." value="{{ old('produk') }}">
                                 @error('produk') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
@@ -35,7 +36,7 @@
                                 @error('sub_kategori') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
-                                <label for="harga">Harga</label>
+                                <label for="harga">Harga</label> <span class="text-danger">*</span>
                                 <input type="number" name="harga" id="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan Harga ..." value="{{ old('harga') }}">
                                 @error('harga') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
@@ -65,7 +66,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
+                                <label for="deskripsi">Deskripsi</label> <span class="text-danger">*</span>
                                 <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukkan deskripsi ..." rows="10">{{ old('deskripsi') }}</textarea>
                                 @error('deskripsi') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
