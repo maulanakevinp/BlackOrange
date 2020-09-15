@@ -311,7 +311,7 @@
             success: function (response) {
                 $("#loading").hide();
 
-                if (response.data.length == 0) {
+                if (response.next_page_url == null) {
                     dataExists = false;
                 }
 

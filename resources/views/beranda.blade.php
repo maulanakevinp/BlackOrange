@@ -4,6 +4,34 @@
 
 @section('styles')
 <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+<style>
+    img.zoom {
+        width: 100%;
+        height: 200px;
+        border-radius: 5px;
+        object-fit: cover;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+    }
+    img.testimoni {
+        width: 100%;
+        max-height: 400px;
+        border-radius: 5px;
+        object-fit: cover;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+    }
+    img.zoom:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+</style>
 @endsection
 
 @section('slider-area')
@@ -21,8 +49,8 @@
                 <div class="col-xl-7 col-lg-7">
                     <div id="owl-one" class="owl-carousel">
                         @foreach ($slideshows as $slideShow)
-                            <a href="{{ asset(Storage::url($slideShow->foto)) }}" data-fancybox="images">
-                                <img style="max-height: 350px" class="mw-100" src="{{ asset(Storage::url($slideShow->foto)) }}" alt="hero">
+                            <a href="{{ asset(Storage::url($slideShow->foto)) }}" data-fancybox>
+                                <img style="max-height: 350px" class="mw-100" src="{{ asset(Storage::url($slideShow->foto)) }}" alt="Slideshow">
                             </a>
                         @endforeach
                     </div>
@@ -146,35 +174,54 @@
     <!-- Services Ara End -->
 @endif
 
+@if($galleries->count() > 0)
+    <div class="services-area pt-100 pb-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="cl-xl-7 col-lg-8 col-md-10">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-70">
+                        <h2>Gallery</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                @foreach ($galleries as $key => $gallery)
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <a href="{{ asset(Storage::url($gallery->foto)) }}" data-fancybox="gallery">
+                            <img src="{{ asset(Storage::url($gallery->foto)) }}" class="zoom img-fluid" alt="Gambar ke {{ $key+1 }}">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+            @if(App\Gallery::all()->count() > 9)
+                <div class="text-center mt-3">
+                    <a href="/gallery" class="btn">Lihat Lebih Banyak Gallery</a>
+                </div>
+            @endif
+        </div>
+    </div>
+@endif
+
 @if($testimonials->count() > 0)
     <!-- Testimonial Start -->
     <div class="testimonial-area testimonial-padding">
         <div class="container">
-            <!-- Testimonial contents -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-xl-8 col-lg-8 col-md-10">
-                    <div class="h1-testimonial-active dot-style">
-                        @foreach ($testimonial as $testimonial)
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption ">
-                                    <div class="testimonial-top-cap">
-                                        <img src="assets/img/gallery/testi-logo.png" alt="">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-                                    </div>
-                                    <!-- founder -->
-                                    <div class="testimonial-founder  ">
-                                        <div class="founder-img">
-                                            <span><strong>Christine Eve</strong> - Co Founder</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+            <div class="row justify-content-center">
+                <div class="cl-xl-7 col-lg-8 col-md-10">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-70">
+                        <h2>Testimoni</h2>
                     </div>
                 </div>
+            </div>
+            <!-- Testimonial contents -->
+            <div id="owl-three" class="owl-carousel">
+                @foreach ($testimonials as $testimonial)
+                    <a href="{{ asset(Storage::url($testimonial->foto)) }}" data-fancybox>
+                        <img class="px-3 testimoni img-fluid" src="{{ asset(Storage::url($testimonial->foto)) }}" alt="testimoni">
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
@@ -183,6 +230,14 @@
 
 <!-- Brand Area Start -->
 <div class="container pt-100 pb-100">
+    <div class="row justify-content-center">
+        <div class="cl-xl-7 col-lg-8 col-md-10">
+            <!-- Section Tittle -->
+            <div class="section-tittle text-center mb-70">
+                <h2>Klien Kami</h2>
+            </div>
+        </div>
+    </div>
     <div id="owl-two" class="owl-carousel">
         @foreach ($brands as $brand)
             <img class="px-3" style="max-height: 150px;" src="{{ asset(Storage::url($brand->foto)) }}" alt="">
@@ -233,19 +288,6 @@
             }
         });
 
-        $().fancybox({
-            selector : '.owl-item:not(.cloned) a',
-            hash   : false,
-            thumbs : {
-                autoStart : true
-            },
-            buttons : [
-                'zoom',
-                'download',
-                'close'
-            ]
-        });
-
         $('#owl-two').owlCarousel({
             loop:true,
             autoplay:true,
@@ -267,6 +309,25 @@
                 },
                 1000:{
                     items:5
+                }
+            }
+        });
+
+        $('#owl-three').owlCarousel({
+            loop:true,
+            autoplay:true,
+            autoplayTimeout:3000,
+            smartSpeed:1000,
+            autoplayHoverPause:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:3
                 }
             }
         });

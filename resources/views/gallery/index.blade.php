@@ -87,8 +87,8 @@
             },
             success: function (response) {
                 $("#loading").hide();
-                console.log(response);
-                if (response.data.length == 0) {
+
+                if (response.next_page_url == null) {
                     dataExists = false;
                 }
 

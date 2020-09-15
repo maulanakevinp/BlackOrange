@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\Gallery;
 use App\Product;
 use App\SlideShow;
 use App\Testimonial;
@@ -19,7 +20,8 @@ class HomeController extends Controller
             'products'      => Product::whereHas('images')->where('produk_atau_jasa', 1)->latest()->take(3)->get(),
             'services'      => Product::whereHas('images')->where('produk_atau_jasa', 2)->latest()->take(3)->get(),
             'testimonials'  => Testimonial::all(),
-            'brands'        => Brand::all()
+            'brands'        => Brand::all(),
+            'galleries'     => Gallery::take(9)->get(),
         ]);
     }
 
