@@ -36,7 +36,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/edit-produk/{produk}', 'ProductController@edit')->name('produk.edit');
     Route::get('/tambah-jasa', 'JasaController@create')->name('jasa.create');
     Route::get('/edit-jasa/{produk}', 'JasaController@edit')->name('jasa.edit');
-    Route::get('/gallery', 'GalleryController@index')->name('gallery.index');
     Route::get('/kelola-gallery', 'GalleryController@edit')->name('gallery.edit');
     Route::get('/slideshow', 'SlideShowController@index')->name('slideshow.index');
     Route::get('/load-slideshow', 'SlideShowController@show')->name('slideshow.show');
