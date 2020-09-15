@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', App\Utility::find(1)->nama_website . ' - Tambah Jasa & Layanan')
+@section('title', $produk->nama_produk . ' - ' . App\Utility::find(1)->nama_website)
 @section('description', $produk->nama_produk . '. Rp. ' . substr(number_format($produk->harga, 2, ',', '.'),0,-3))
 @section('styles')
 <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
