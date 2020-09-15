@@ -36,7 +36,7 @@
         </form>
         <div class="row justify-content-center">
             @forelse ($products as $product)
-                <div class="col-lg-4 col-md-6 col-sm-10 mb-200 mt-20">
+                <div class="col-lg-4 col-md-6 col-sm-10 mb-200 mt-50">
                     <div class="single-services">
                         @if (count($product->images) > 0)
                             <div class="services-img">
