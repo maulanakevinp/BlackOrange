@@ -3,6 +3,7 @@
 @section('title', App\Utility::find(1)->nama_website . ' - Login')
 
 @section('slider-area')
+@include('layouts.components.alert')
 <div class="slider-area2">
     <div class="pb-100 pt-100 hero-overly">
         <div class="container">

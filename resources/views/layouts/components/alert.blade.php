@@ -30,7 +30,7 @@
                 <span class="alert-icon"><i class="fas fa-times-circle"></i> <strong>Gagal</strong></span>
                 <span class="alert-text">
                     <ul>
-                        @foreach ($errors->all() as $error)
+                        @foreach ($errors ?? ''->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>

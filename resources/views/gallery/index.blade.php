@@ -88,12 +88,16 @@
             success: function (response) {
                 $("#loading").hide();
 
-                if (response.next_page_url == null) {
+                if (response.data.length == 0) {
                     dataExists = false;
                 }
 
                 if (page == 1 && dataExists == false) {
                     showNothing();
+                }
+
+                if (response.next_page_url == null) {
+                    dataExists = false;
                 }
 
                 $.each(response.data, function(index,result){

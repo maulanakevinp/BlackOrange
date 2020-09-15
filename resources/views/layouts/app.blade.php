@@ -27,7 +27,6 @@
 </head>
 
 <body class="body-bg">
-    @include('layouts.components.alert')
     <!--? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">

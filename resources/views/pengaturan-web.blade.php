@@ -13,6 +13,7 @@
 @endsection
 
 @section('slider-area')
+@include('layouts.components.alert')
 <div class="slider-area2">
     <div class="pb-100 pt-100 hero-overly">
         <div class="container">
