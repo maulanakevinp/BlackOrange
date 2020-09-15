@@ -103,7 +103,7 @@ class JasaController extends Controller
         ]);
 
         $produk = Product::create($data);
-        return redirect()->route('jasa.edit', $produk)->with('success', 'Jasa & Layanan berhasil ditambahkan, HARAP MENAMBAHKAN GAMBAR AGAR PRODUK DAPAT DILIHAT PELANGGAN');
+        return redirect()->route('jasa.edit', $produk)->with('success', 'Jasa & Layanan berhasil ditambahkan');
     }
 
     /**

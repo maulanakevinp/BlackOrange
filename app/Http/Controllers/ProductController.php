@@ -103,7 +103,7 @@ class ProductController extends Controller
         ]);
 
         $produk = Product::create($data);
-        return redirect()->route('produk.edit', $produk)->with('success', 'Produk berhasil ditambahkan, HARAP MENAMBAHKAN GAMBAR AGAR PRODUK DAPAT DILIHAT PELANGGAN');
+        return redirect()->route('produk.edit', $produk)->with('success', 'Produk berhasil ditambahkan');
     }
 
     /**

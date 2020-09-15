@@ -47,6 +47,18 @@
         <div class="container">
             <div class="pt-80 hero-cap hero-cap2">
                 <h2 class="text-center">EDIT PRODUK</h2>
+                @if (count($produk->images) == 0)
+                    <div class="alert alert-info alert-dismissible fade show mt-5" role="alert">
+                        <span class="alert-icon"><i class="fas fa-bell"></i></span>
+                        <span class="alert-text">
+                            <strong>Perhatian</strong>
+                            Harap Menambahkan Gambar Supaya Produk Ini Dapat Dilihat Oleh Pelanggan
+                        </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <form autocomplete="off" class="mt-5" action="{{ route('produk.update', $produk) }}" method="post">
                     @csrf @method('patch')
                     <input type="hidden" name="produk_atau_jasa" value="1">
