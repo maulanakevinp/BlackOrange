@@ -36,8 +36,8 @@
         </form>
         <div class="row justify-content-center">
             @forelse ($products as $product)
-                <div class="col-lg-4 col-md-6 col-sm-10 mb-80">
-                    <div class="single-services mb-200">
+                <div class="col-lg-4 col-md-6 col-sm-10 mb-200">
+                    <div class="single-services">
                         @if (count($product->images) > 0)
                             <div class="services-img">
                                 <img src="{{ asset(Storage::url($product->images[0]->foto)) }}" alt="">

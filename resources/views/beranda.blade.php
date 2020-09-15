@@ -102,8 +102,8 @@
             </div>
             <div class="row justify-content-center">
                 @foreach ($products as $product)
-                    <div class="col-lg-4 col-md-6 col-sm-10">
-                        <div class="single-services mb-200">
+                    <div class="col-lg-4 col-md-6 col-sm-10 mb-200">
+                        <div class="single-services">
                             <div class="services-img">
                                 <img src="{{ url(Storage::url($product->images[0]->foto)) }}" alt="{{ $product->nama_produk }}">
                             </div>
