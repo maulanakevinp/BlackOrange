@@ -81,22 +81,22 @@
                     </div>
                     <div class="form-group">
                         <label for="link_facebook">Link Facebook</label>
-                        <input type="url" name="link_facebook" id="link_facebook" class="form-control @error('link_facebook') is-invalid @enderror" placeholder="Masukkan Link Facebook ..." value="{{ old('link_facebook', $utility->link_facebook) }}">
+                        <input type="text" name="link_facebook" id="link_facebook" class="form-control @error('link_facebook') is-invalid @enderror" placeholder="Masukkan Link Facebook ..." value="{{ old('link_facebook', $utility->link_facebook) }}">
                         @error('link_facebook') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="link_instagram">Link Instagram</label>
-                        <input type="url" name="link_instagram" id="link_instagram" class="form-control @error('link_instagram') is-invalid @enderror" placeholder="Masukkan Link Instagram ..." value="{{ old('link_instagram', $utility->link_instagram) }}">
+                        <input type="text" name="link_instagram" id="link_instagram" class="form-control @error('link_instagram') is-invalid @enderror" placeholder="Masukkan Link Instagram ..." value="{{ old('link_instagram', $utility->link_instagram) }}">
                         @error('link_instagram') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="link_twitter">Link Twitter</label>
-                        <input type="url" name="link_twitter" id="link_twitter" class="form-control @error('link_twitter') is-invalid @enderror" placeholder="Masukkan Link Twitter ..." value="{{ old('link_twitter', $utility->link_twitter) }}">
+                        <input type="text" name="link_twitter" id="link_twitter" class="form-control @error('link_twitter') is-invalid @enderror" placeholder="Masukkan Link Twitter ..." value="{{ old('link_twitter', $utility->link_twitter) }}">
                         @error('link_twitter') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="link_youtube">Link Youtube</label>
-                        <input type="url" name="link_youtube" id="link_youtube" class="form-control @error('link_youtube') is-invalid @enderror" placeholder="Masukkan Link Youtube ..." value="{{ old('link_youtube', $utility->link_youtube) }}">
+                        <input type="text" name="link_youtube" id="link_youtube" class="form-control @error('link_youtube') is-invalid @enderror" placeholder="Masukkan Link Youtube ..." value="{{ old('link_youtube', $utility->link_youtube) }}">
                         @error('link_youtube') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">

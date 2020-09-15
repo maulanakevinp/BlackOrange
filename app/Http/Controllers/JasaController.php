@@ -96,10 +96,10 @@ class JasaController extends Controller
             'sub_kategori'      =>  ['nullable','string','max:64'],
             'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
-            'bukalapak'         =>  ['nullable'],
-            'tokopedia'         =>  ['nullable'],
-            'shopee'            =>  ['nullable'],
-            'olx'               =>  ['nullable'],
+            'bukalapak'         =>  ['nullable','url'],
+            'tokopedia'         =>  ['nullable','url'],
+            'shopee'            =>  ['nullable','url'],
+            'olx'               =>  ['nullable','url'],
         ]);
 
         $produk = Product::create($data);
@@ -157,10 +157,10 @@ class JasaController extends Controller
             'sub_kategori'      =>  ['nullable','string','max:64'],
             'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
-            'bukalapak'         =>  ['nullable'],
-            'tokopedia'         =>  ['nullable'],
-            'shopee'            =>  ['nullable'],
-            'olx'               =>  ['nullable'],
+            'bukalapak'         =>  ['nullable','url'],
+            'tokopedia'         =>  ['nullable','url'],
+            'shopee'            =>  ['nullable','url'],
+            'olx'               =>  ['nullable','url'],
         ]);
 
         $produk->update($data);
