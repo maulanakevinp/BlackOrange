@@ -123,7 +123,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="text-center">
+            <div class="text-center mt-5">
                 <a href="/produk" class="btn">Lihat Lebih Banyak Produk</a>
             </div>
         </div>
@@ -166,7 +166,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="text-center">
+            <div class="text-center mt-5">
                 <a href="/jasa" class="btn">Lihat Lebih Banyak Jasa & Layanan</a>
             </div>
         </div>
