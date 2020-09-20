@@ -28,17 +28,17 @@
                                     @if ($layanan->groupBy('produk')->count() > 0)
                                         <ul class="submenu">
                                             @foreach ($layanan->groupBy('produk') as $productKey => $product)
-                                                <li><a href="/jasa?produk={{ $productKey }}">{{ $productKey }}</a>
-                                                    @if ($layanan->where('produk', $productKey)->groupBy('kategori')->count() > 1)
+                                                <li><a href="/jasa?jasa={{ $productKey }}">{{ $productKey }}</a>
+                                                    @if ($layanan->where('produk', $productKey)->groupBy('kategori')->count() > 0)
                                                         <ul class="sub-submenu">
                                                             @foreach($layanan->where('produk', $productKey)->groupBy('kategori') as $categoryKey => $category)
-                                                                @if($categoryKey!= "")
-                                                                    <li><a href="/jasa?produk={{ $productKey }}?kategori={{ $categoryKey }}">{{ $categoryKey }}</a>
-                                                                        @if ($layanan->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 1)
+                                                                @if($categoryKey != "")
+                                                                    <li><a href="/jasa?jasa={{ $productKey }}&kategori={{ $categoryKey }}">{{ $categoryKey }}</a>
+                                                                        @if ($layanan->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 0)
                                                                             <ul class="sub-submenu">
                                                                                 @foreach($layanan->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
                                                                                     @if($subcategoryKey != "")
-                                                                                        <li><a href="/jasa?produk={{ $productKey }}&kategori={{ $categoryKey }}&sub_kategori={{ $subcategoryKey }}">{{ $subcategoryKey }}</a></li>
+                                                                                        <li><a href="/jasa?jasa={{ $productKey }}&kategori={{ $categoryKey }}&sub_kategori={{ $subcategoryKey }}">{{ $subcategoryKey }}</a></li>
                                                                                     @else
                                                                                         <li class="nothing" style="display: none"></li>
                                                                                     @endif
@@ -66,14 +66,14 @@
                                                         <ul class="sub-submenu">
                                                             @foreach($barang->where('produk', $productKey)->groupBy('kategori') as $categoryKey => $category)
                                                                 @if($categoryKey != "")
-                                                                    <li><a href="?produk={{ $productKey }}&kategori={{ $categoryKey }}">{{ $categoryKey }}</a>
+                                                                    <li><a href="/produk?produk={{ $productKey }}&kategori={{ $categoryKey }}">{{ $categoryKey }}</a>
                                                                         @if ($barang->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori')->count() > 0)
                                                                             <ul class="sub-submenu">
                                                                                 @foreach($barang->where('produk', $productKey)->where('kategori', $categoryKey)->groupBy('sub_kategori') as $subcategoryKey => $subcategory)
                                                                                     @if($subcategoryKey != "")
-                                                                                        <li><a href="?produk={{ $productKey }}&kategori={{ $categoryKey }}&sub_kategori={{ $subcategoryKey }}">{{ $subcategoryKey }}</a></li>
+                                                                                        <li><a href="/produk?produk={{ $productKey }}&kategori={{ $categoryKey }}&sub_kategori={{ $subcategoryKey }}">{{ $subcategoryKey }}</a></li>
                                                                                     @else
-                                                                                        <li class="nothing"></li>
+                                                                                        <li class="nothing" style="display: none"></li>
                                                                                     @endif
                                                                                 @endforeach
                                                                             </ul>

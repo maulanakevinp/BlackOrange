@@ -19,15 +19,15 @@ class JasaController extends Controller
         if (auth()->user()) {
             $products = Product::where('produk_atau_jasa',2)->latest()->paginate(9);
 
-            if ($request->produk) {
+            if ($request->jasa) {
                 if ($request->kategori) {
                     if ($request->sub_kategori) {
-                        $products = Product::where('produk_atau_jasa',2)->where('produk', $request->produk)->where('kategori', $request->kategori)->where('sub_kategori', $request->sub_kategori)->latest()->paginate(9);
+                        $products = Product::where('produk_atau_jasa',2)->where('produk', $request->jasa)->where('kategori', $request->kategori)->where('sub_kategori', $request->sub_kategori)->latest()->paginate(9);
                     } else {
-                        $products = Product::where('produk_atau_jasa',2)->where('produk', $request->produk)->where('kategori', $request->kategori)->latest()->paginate(9);
+                        $products = Product::where('produk_atau_jasa',2)->where('produk', $request->jasa)->where('kategori', $request->kategori)->latest()->paginate(9);
                     }
                 } else {
-                    $products = Product::where('produk_atau_jasa',2)->where('produk', $request->produk)->latest()->paginate(9);
+                    $products = Product::where('produk_atau_jasa',2)->where('produk', $request->jasa)->latest()->paginate(9);
                 }
             }
 

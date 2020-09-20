@@ -8,7 +8,7 @@
         <div class="container">
             <div class="hero-cap hero-cap2 text-center pt-80">
                 <h2>JASA & LAYANAN</h2>
-                <p class="text-white">{{ request('produk') != '' ? request('produk') : '' }}{{ request('kategori') != '' ? ', ' . request('kategori') : '' }}{{ request('sub_kategori') != '' ? ', ' . request('sub_kategori') : '' }}</p>
+                <p class="text-white">{{ request('jasa') != '' ? request('jasa') : '' }}{{ request('kategori') != '' ? ', ' . request('kategori') : '' }}{{ request('sub_kategori') != '' ? ', ' . request('sub_kategori') : '' }}</p>
                 @auth
                     <a href="/tambah-jasa" class="btn header-btn mt-3">Tambah</a>
                 @endauth
