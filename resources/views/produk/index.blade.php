@@ -19,6 +19,7 @@
 @endsection
 
 @section('content')
+@include('layouts.components.alert')
 <div class="services-area pt-100 pb-100">
     <div class="container">
         <form class="mb-5" action="{{ URL::current() }}" method="GET">
