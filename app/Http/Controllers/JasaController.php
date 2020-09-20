@@ -174,17 +174,17 @@ class JasaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $produk
+     * @param  \App\Product  $jasa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $produk)
+    public function destroy(Product $jasa)
     {
-        foreach ($produk->images as $image) {
+        foreach ($jasa->images as $image) {
             File::delete(storage_path('app/'.$image->foto));
             $image->delete();
         }
 
-        $produk->delete();
+        $jasa->delete();
         return redirect()->back()->with('success', 'Jasa & Layanan berhasil dihapus');
     }
 }

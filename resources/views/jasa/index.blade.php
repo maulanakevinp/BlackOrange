@@ -19,6 +19,7 @@
 @endsection
 
 @section('content')
+@include('layouts.components.alert')
 <div class="services-area pt-100 pb-100">
     <div class="container">
         <form class="mb-5" action="{{ URL::current() }}" method="GET">
@@ -69,7 +70,7 @@
                                         </svg>
                                     </button>
 
-                                    <form class="d-inline-block" action="{{ route('jasa.destroy', $product) }}" method="post">
+                                    <form class="d-inline-block" action="{{ route('jasa.destroy', ['jasa' => $product]) }}" method="post">
                                         @csrf @method('delete')
                                         <button type="submit" class="mx-1 bg-danger p-2 rounded border-0" onclick="return confirm('Apakah anda yakin ingin menghapus produk {{ $product->nama_produk }} ini ?')" title="Hapus Jasa & Layanan">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
