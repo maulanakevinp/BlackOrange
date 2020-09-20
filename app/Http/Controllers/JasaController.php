@@ -94,7 +94,6 @@ class JasaController extends Controller
             'produk'            =>  ['required','string','max:64'],
             'kategori'          =>  ['nullable','string','max:64','required_with:sub_kategori'],
             'sub_kategori'      =>  ['nullable','string','max:64'],
-            'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
             'bukalapak'         =>  ['nullable','url'],
             'tokopedia'         =>  ['nullable','url'],
@@ -148,10 +147,10 @@ class JasaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $produk
+     * @param  \App\Product  $jasa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $produk)
+    public function update(Request $request, Product $jasa)
     {
         $data = $request->validate([
             'produk_atau_jasa'  =>  ['required'],
@@ -159,7 +158,6 @@ class JasaController extends Controller
             'produk'            =>  ['required','string','max:64'],
             'kategori'          =>  ['nullable','string','max:64','required_with:sub_kategori'],
             'sub_kategori'      =>  ['nullable','string','max:64'],
-            'harga'             =>  ['required','numeric','min:1000'],
             'deskripsi'         =>  ['required'],
             'bukalapak'         =>  ['nullable','url'],
             'tokopedia'         =>  ['nullable','url'],
@@ -167,7 +165,7 @@ class JasaController extends Controller
             'olx'               =>  ['nullable','url'],
         ]);
 
-        $produk->update($data);
+        $jasa->update($data);
         return redirect()->back()->with('success', 'Jasa & Layanan berhasil diperbarui');
     }
 

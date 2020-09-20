@@ -59,9 +59,9 @@
                         </button>
                     </div>
                 @endif
-                <form autocomplete="off" class="mt-5" action="{{ route('jasa.update', $produk) }}" method="post">
+                <form autocomplete="off" class="mt-5" action="{{ route('jasa.update', ['jasa' => $produk]) }}" method="post">
                     @csrf @method('patch')
-                    <input type="hidden" name="produk_atau_jasa" value="1">
+                    <input type="hidden" name="produk_atau_jasa" value="2">
                     <p class="text-secondary">Tanda <span class="text-danger">*</span> = Wajib diisi</p>
                     <div class="row justify-content-center text-white">
                         <div class="col-lg-6">
@@ -85,12 +85,6 @@
                                 <input type="text" name="sub_kategori" id="sub_kategori" class="form-control @error('sub_kategori') is-invalid @enderror" placeholder="Masukkan Sub Kategori ..." value="{{ old('sub_kategori', $produk->sub_kategori) }}">
                                 @error('sub_kategori') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="harga">Harga</label> <span class="text-danger">*</span>
-                                <input type="number" name="harga" id="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan Harga ..." value="{{ old('harga', $produk->harga) }}">
-                                @error('harga') <span class="invalid-feedback">{{ $message }}</span> @enderror
-                            </div>
-
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">

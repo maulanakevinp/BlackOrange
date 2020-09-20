@@ -35,12 +35,6 @@
                                 <input type="text" name="sub_kategori" id="sub_kategori" class="form-control @error('sub_kategori') is-invalid @enderror" placeholder="Masukkan Sub Kategori ..." value="{{ old('sub_kategori') }}">
                                 @error('sub_kategori') <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="harga">Harga</label> <span class="text-danger">*</span>
-                                <input type="number" name="harga" id="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan Harga ..." value="{{ old('harga') }}">
-                                @error('harga') <span class="invalid-feedback">{{ $message }}</span> @enderror
-                            </div>
-
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">

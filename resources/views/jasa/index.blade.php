@@ -52,12 +52,6 @@
                                     <a href="#" title="Detail Jasa & Layanan Tidak Tersedia Karena Tidak Ada Gambar">{{ $product->nama_produk }}</a>
                                 @endif
                             </h3>
-                            <p class="pera1 h4">
-                                Rp. {{ substr(number_format($product->harga, 2, ',', '.'),0,-3) }}
-                            </p>
-                            <p class="pera2 h4">
-                                Rp. {{ substr(number_format($product->harga, 2, ',', '.'),0,-3) }}
-                            </p>
                             <div class="float-left">
                                 {{ $product->produk }}{{ $product->kategori ? ', ' . $product->kategori : '' }}{{ $product->sub_kategori ? ', ' . $product->sub_kategori : '' }}
                             </div>

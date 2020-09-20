@@ -152,12 +152,6 @@
                             </div>
                             <div class="services-caption">
                                 <h3><a href="{{ route("jasa.show", ['produk' => $product, 'slug' => Str::slug($product->nama_produk)]) }}" title="Detail Produk">{{ $product->nama_produk }}</a></h3>
-                                <p class="pera1 h4">
-                                    Rp. {{ substr(number_format($product->harga, 2, ',', '.'),0,-3) }}
-                                </p>
-                                <p class="pera2 h4">
-                                    Rp. {{ substr(number_format($product->harga, 2, ',', '.'),0,-3) }}
-                                </p>
                                 <div class="float-left">
                                     {{ $product->produk }}{{ $product->kategori ? ', ' . $product->kategori : '' }}{{ $product->sub_kategori ? ', ' . $product->sub_kategori : '' }}
                                 </div>
