@@ -33,7 +33,6 @@
                 <div class="col-lg-8">
                     <div class="pt-80 hero-cap hero-cap2 text-center">
                         <h2>{{ $produk->nama_produk }}</h2>
-                        <h3>Rp. {{ substr(number_format($produk->harga, 2, ',', '.'),0,-3) }}</h3>
                         <p class="text-white">{{ $produk->produk }}{{ $produk->kategori ? ', ' . $produk->kategori: ''}}{{ $produk->sub_kategori ? ', ' . $produk->sub_kategori: ''}}</p>
                     </div>
                 </div>
